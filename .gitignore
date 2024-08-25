@@ -274,3 +274,5 @@ dump.rdb
 plasticityhub/media/
 
 .pytest_cache/
+
+trials/
