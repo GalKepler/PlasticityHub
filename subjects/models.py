@@ -17,7 +17,14 @@ class Subject(models.Model):
     ]
 
     subject_id = models.CharField(
-        max_length=50, unique=True, help_text="Unique identifier for the subject"
+        max_length=50,
+        unique=True,
+        help_text="Unique identifier for the subject",
+    )
+    questionnaire_id = models.CharField(
+        max_length=50,
+        blank=True,
+        help_text="Unique identifier for the questionnaire",
     )
     first_name = models.CharField(max_length=100, blank=True)
     last_name = models.CharField(max_length=100, blank=True)
@@ -28,15 +35,31 @@ class Subject(models.Model):
         choices=SUBJECT_HANDEDNESS_CHOICES,
         default="U",
     )
-    date_of_enrollment = models.DateField(
-        blank=True, null=True, help_text="Date the subject was enrolled in the study"
-    )
     comments = models.TextField(
         blank=True,
         help_text="Additional comments or notes about the subject",
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
+    studies = models.ManyToManyField(
+        "studies.Study",
+        related_name="subjects",
+        blank=True,
+        help_text="Studies that this subject is participating in",
+    )
+    groups = models.ManyToManyField(
+        "studies.Group",
+        related_name="subjects",
+        blank=True,
+        help_text="Groups that this subject is a member of",
+    )
+    conditions = models.ManyToManyField(
+        "studies.Condition",
+        related_name="subjects",
+        blank=True,
+        help_text="Conditions that this subject has been assigned to",
+    )
 
     class Meta:
         verbose_name = "Subject"

@@ -276,3 +276,4 @@ plasticityhub/media/
 .pytest_cache/
 
 trials/
+.env
