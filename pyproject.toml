@@ -41,6 +41,9 @@ django-coverage-plugin = "3.1.0"
 pytest-django = "4.8.0"
 gunicorn = "23.0.0"
 django-anymail = {version = "11.1", extras = ["mailgun"]}
+jupyter = "^1.0.0"
+notebook = "^7.2.1"
+pandas = "^2.2.2"
 
 
 [tool.poetry.group.dev.dependencies]

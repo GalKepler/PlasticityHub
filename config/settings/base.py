@@ -87,8 +87,9 @@ THIRD_PARTY_APPS = [
 
 LOCAL_APPS = [
     "plasticityhub.users",
-    "subjects",
-    "studies",
+    "plasticityhub.subjects",
+    "plasticityhub.studies",
+    "plasticityhub.scans",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS

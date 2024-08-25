@@ -6,7 +6,7 @@ from django.utils.translation import gettext_lazy as _
 
 class SubjectsConfig(AppConfig):
     default_auto_field = "django.db.models.BigAutoField"
-    name = "subjects"
+    name = "plasticityhub.subjects"
     verbose_name = _("Subjects")
 
     def ready(self):
