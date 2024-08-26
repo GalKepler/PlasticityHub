@@ -44,6 +44,7 @@ django-anymail = {version = "11.1", extras = ["mailgun"]}
 jupyter = "^1.0.0"
 notebook = "^7.2.1"
 pandas = "^2.2.2"
+python-dotenv = "^1.0.1"
 
 
 [tool.poetry.group.dev.dependencies]

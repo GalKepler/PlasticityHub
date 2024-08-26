@@ -54,13 +54,25 @@ class Session(models.Model):
         ordering = ["session_id"]
 
     def __str__(self):
-        return f"Session {self.id} for {self.subject} on {self.session_date}"
+        return f"Session {self.id} for {self.subject} on {self.date} at {self.time}"
 
     @property
     def session_date(self):
         """
         Return the datetime of the session based on the session
         """
-        return datetime.datetime.strptime(self.session_id, "%Y%m%d_%H%M").replace(
-            tzinfo=datetime.UTC,
-        )
+        return datetime.datetime.strptime(self.session_id, "%Y%m%d_%H%M").astimezone()
+
+    @property
+    def date(self):
+        """
+        Return the date of the session
+        """
+        return self.session_date.date()
+
+    @property
+    def time(self):
+        """
+        Return the time of the session
+        """
+        return self.session_date.time()
