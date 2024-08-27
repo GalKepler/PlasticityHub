@@ -45,9 +45,9 @@ class Session(models.Model):
         null=True,
     )
     scan_tag = models.CharField(
-        max_length=10,
+        max_length=20,
         help_text="The tag associated with the scan (e.g, pre, post, during)",
-        default=None,
+        blank=True,
     )
     session_id = models.CharField(
         max_length=50,

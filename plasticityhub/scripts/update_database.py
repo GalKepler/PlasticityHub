@@ -11,13 +11,9 @@ from plasticityhub.studies.models import Study
 from plasticityhub.subjects.models import Subject
 
 COLUMNS_MAPPING = {
-    "first_name": {
+    "name": {
         "scope": "subject",
-        "field": "first_name",
-    },
-    "last_name": {
-        "scope": "subject",
-        "field": "last_name",
+        "field": "name",
     },
     "dob": {
         "scope": "subject",
@@ -93,6 +89,10 @@ def reformat_df(df: pd.DataFrame) -> pd.DataFrame:
         The reformatted DataFrame.
     """
     df.columns = df.columns.str.lower()
+    # drop repeated scanid, keep the first one
+    df = df.drop_duplicates(subset=["scanid"], keep="first")  # noqa: PD901
+    # drop rows with missing scanid
+    df = df.dropna(subset=["scanid"])  # noqa: PD901
     # Convert the date of birth to a datetime object
     df["dob"] = pd.to_datetime(df["dob"])
 
@@ -109,20 +109,93 @@ def reformat_df(df: pd.DataFrame) -> pd.DataFrame:
 
     df["scantag"] = df["scantag"].str.lower()
 
-    # Split the name into first, middle, and last name components.
-    # keep only the first and last name components
-    name_components = pd.DataFrame(index=df.index, columns=["first_name", "last_name"])
-    for i, row in df.iterrows():
-        try:
-            name_parts = row["name"].split()
-        except AttributeError:
-            name_parts = ["Unknown", "Unknown"]
-        name_components.loc[i, "first_name"] = name_parts[0]
-        name_components.loc[i, "last_name"] = name_parts[-1]
+    df["name"] = df["name"].str.title().fillna("Unknown Unknown")
+    return df
 
-    # Concatenate the name components with the original data
-    df = pd.concat([df, name_components], axis=1)  # noqa: PD901
-    return df  # noqa: RET504
+
+def get_or_create_subject(subject_kwargs: dict, session_kwargs: dict):
+    """
+    Get or create a subject and session based on the provided information.
+
+    Parameters
+    ----------
+    subject_kwargs : dict
+        The keyword arguments to create the subject.
+    session_kwargs : dict
+        The keyword arguments to create the session.
+
+    Returns
+    -------
+    Subject
+        The subject object.
+    Session
+        The session object.
+    """
+    # check for existing subject
+    subject = Subject.objects.filter(subject_id=subject_kwargs["subject_id"]).first()
+    # if subject exists, update the subject
+    if subject:
+        for key, value in subject_kwargs.items():
+            # check the existing attribute
+            if getattr(subject, key) == value:
+                continue
+            # update only if the session is later than the latest session
+            latest_session = subject.sessions.order_by("-session_id").first()
+            if (
+                latest_session
+                and latest_session.session_id > session_kwargs["session_id"]
+            ):
+                # check if the attribute is empty
+                if not getattr(subject, key):
+                    setattr(subject, key, value)
+
+                continue
+            # update the attribute
+            setattr(subject, key, value)
+        subject.save()
+    else:
+        subject, _ = Subject.objects.get_or_create(**subject_kwargs)
+    return subject
+
+
+def process_row(row: pd.Series):
+    """
+    Process a row from the DataFrame and update the database with the information.
+
+    Parameters
+    ----------
+    row : pd.Series
+        The row to process.
+    """
+    subject_kwargs = {}
+    session_kwargs = {}
+    for col, mapping in COLUMNS_MAPPING.items():
+        if mapping["scope"] == "subject":
+            subject_kwargs[mapping["field"]] = row[col]
+        elif mapping["scope"] == "session":
+            session_kwargs[mapping["field"]] = row[col]
+
+    subject = get_or_create_subject(subject_kwargs, session_kwargs)
+    study, _ = Study.objects.get_or_create(name=session_kwargs["study"])
+    group, _ = Group.objects.get_or_create(
+        name=session_kwargs["group"],
+        study=study,
+    )
+    condition, _ = Condition.objects.get_or_create(
+        name=session_kwargs["condition"],
+        study=study,
+    )
+    lab, _ = Lab.objects.get_or_create(name=session_kwargs["lab"])
+    session_kwargs.update(
+        {
+            "subject": subject,
+            "study": study,
+            "group": group,
+            "condition": condition,
+            "lab": lab,
+        },
+    )
+    session, _ = Session.objects.get_or_create(**session_kwargs)
 
 
 def update_database_from_file(in_file: Path):
@@ -135,38 +208,16 @@ def update_database_from_file(in_file: Path):
         The path to the input CSV file containing the data to update the database with.
     """
     # Read the data from the input file
-    df = pd.read_csv(in_file)  # noqa: PD901
+    df = pd.read_excel(in_file)  # noqa: PD901
 
     # Reformat the DataFrame
     df = reformat_df(df)  # noqa: PD901
 
     # Update the database with the information from the DataFrame
-    for _, row in tqdm.tqdm(df.iterrows()):
-        subject_kwargs = {}
-        session_kwargs = {}
-        for col, mapping in COLUMNS_MAPPING.items():
-            if mapping["scope"] == "subject":
-                subject_kwargs[mapping["field"]] = row[col]
-            elif mapping["scope"] == "session":
-                session_kwargs[mapping["field"]] = row[col]
-        subject, _ = Subject.objects.get_or_create(**subject_kwargs)
-        study, _ = Study.objects.get_or_create(name=session_kwargs["study"])
-        group, _ = Group.objects.get_or_create(
-            name=session_kwargs["group"],
-            study=study,
-        )
-        condition, _ = Condition.objects.get_or_create(
-            name=session_kwargs["condition"],
-            study=study,
-        )
-        lab, _ = Lab.objects.get_or_create(name=session_kwargs["lab"])
-        session_kwargs.update(
-            {
-                "subject": subject,
-                "study": study,
-                "group": group,
-                "condition": condition,
-                "lab": lab,
-            },
-        )
-        session, _ = Session.objects.get_or_create(**session_kwargs)
+    for i, row in tqdm.tqdm(df.iterrows()):
+        try:
+            process_row(row)
+        except Exception as e:  # noqa: BLE001
+            print(f"Error processing row {i}: {row}")  # noqa: T201
+            print(e)  # noqa: T201
+            break

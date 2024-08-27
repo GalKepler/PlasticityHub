@@ -19,16 +19,19 @@ class Subject(models.Model):
 
     subject_id = models.CharField(
         max_length=50,
-        unique=True,
         help_text="Unique identifier for the subject",
+        unique=True,
     )
     questionnaire_id = models.CharField(
         max_length=50,
         blank=True,
         help_text="Unique identifier for the questionnaire",
     )
-    first_name = models.CharField(max_length=100, blank=True)
-    last_name = models.CharField(max_length=100, blank=True)
+    name = models.CharField(
+        max_length=100,
+        blank=True,
+        help_text="Name of the subject",
+    )
     date_of_birth = models.DateField(blank=True, null=True)
     sex = models.CharField(max_length=1, choices=SUBJECT_SEX_CHOICES, default="U")
     handedness = models.CharField(
@@ -122,3 +125,15 @@ class Subject(models.Model):
         if self.height and self.weight:
             return self.weight / ((self.height / 100) ** 2)
         return None
+
+    @property
+    def first_name(self):
+        return self.name.split()[0]
+
+    @property
+    def last_name(self):
+        return " ".join(self.name.split()[1:])
+
+    @property
+    def bmi(self):
+        return self.calculate_bmi()
