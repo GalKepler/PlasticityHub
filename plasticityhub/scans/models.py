@@ -4,6 +4,7 @@ from django.db import models
 
 from plasticityhub.studies.models import Condition
 from plasticityhub.studies.models import Group
+from plasticityhub.studies.models import Lab
 from plasticityhub.studies.models import Study
 from plasticityhub.subjects.models import Subject
 
@@ -35,6 +36,18 @@ class Session(models.Model):
         related_name="sessions",
         help_text="The condition associated with this session",
         null=True,
+    )
+    lab = models.ForeignKey(
+        Lab,
+        on_delete=models.CASCADE,
+        related_name="sessions",
+        help_text="The lab associated with this session",
+        null=True,
+    )
+    scan_tag = models.CharField(
+        max_length=10,
+        help_text="The tag associated with the scan (e.g, pre, post, during)",
+        default=None,
     )
     session_id = models.CharField(
         max_length=50,
