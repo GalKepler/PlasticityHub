@@ -93,6 +93,7 @@ def reformat_df(df: pd.DataFrame) -> pd.DataFrame:
     # drop repeated scanid, keep the first one
     df = df.drop_duplicates(subset=["scanid"], keep="first")  # noqa: PD901
     # drop rows with missing scanid
+    df["scanid"] = df["scanid"].replace("", pd.NA)
     df = df.dropna(subset=["scanid"])  # noqa: PD901
     # Convert the date of birth to a datetime object
     df["dob"] = pd.to_datetime(df["dob"])
@@ -168,6 +169,8 @@ def process_row(row: pd.Series):
     row : pd.Series
         The row to process.
     """
+    if row["status"] in ["Scan Scheduled", "Not Suitable", "Not Interested"]:
+        return
     subject_kwargs = {}
     session_kwargs = {}
     for col, mapping in COLUMNS_MAPPING.items():
@@ -175,7 +178,6 @@ def process_row(row: pd.Series):
             subject_kwargs[mapping["field"]] = row[col]
         elif mapping["scope"] == "session":
             session_kwargs[mapping["field"]] = row[col]
-
     subject = get_or_create_subject(subject_kwargs, session_kwargs)
     study, _ = Study.objects.get_or_create(name=session_kwargs["study"])
     group, _ = Group.objects.get_or_create(
@@ -220,7 +222,6 @@ def update_database_from_file(in_file: Path):
         except Exception as e:  # noqa: BLE001
             print(f"Error processing row {i}: {row}")  # noqa: T201
             print(e)  # noqa: T201
-            break
 
 
 class Command(BaseCommand):

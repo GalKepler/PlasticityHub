@@ -93,6 +93,7 @@ def reformat_df(df: pd.DataFrame) -> pd.DataFrame:
     # drop repeated scanid, keep the first one
     df = df.drop_duplicates(subset=["scanid"], keep="first")  # noqa: PD901
     # drop rows with missing scanid
+    df.loc[:, "scanid"] = df.loc[:, "scanid"].replace("", pd.NA)
     df = df.dropna(subset=["scanid"])  # noqa: PD901
     # Convert the date of birth to a datetime object
     df["dob"] = pd.to_datetime(df["dob"])
@@ -265,7 +266,6 @@ def update_database_from_sheet(sheet_key: str, credentials: str, authorized_user
         except Exception as e:  # noqa: BLE001
             print(f"\nError processing row {i}: {row}")  # noqa: T201
             print(e)  # noqa: T201
-            break
 
 
 class Command(BaseCommand):
