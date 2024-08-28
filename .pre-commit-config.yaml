@@ -26,21 +26,22 @@ repos:
       - id: django-upgrade
         args: ['--target-version', '5.0']
 
-  # Run the Ruff linter.
-  - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.6.2
+  - repo: https://github.com/psf/black
+    rev: 24.4.0
     hooks:
-      # Linter
-      - id: ruff
-        args: [--fix, --exit-non-zero-on-fix, --show-fixes]
-      # Formatter
-      - id: ruff-format
+      - id: black
+  - repo: https://github.com/pycqa/isort
+    rev: 5.13.2  # Specify the version of isort you want to use
+    hooks:
+      - id: isort
+        args: ['--profile', 'black']  # Ensuring compatibility with Black
 
   - repo: https://github.com/Riverside-Healthcare/djLint
     rev: v1.34.1
     hooks:
       - id: djlint-reformat-django
       - id: djlint-django
+
 
 # sets up .pre-commit-ci.yaml to ensure pre-commit dependencies stay up to date
 ci:
