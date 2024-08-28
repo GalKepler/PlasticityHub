@@ -19,21 +19,43 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  linter:
-    runs-on: ubuntu-latest
+  test:
+    name: ${{ matrix.name }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - name: "check"
+            python: "3.11"
+            toxpython: "python3.11"
+            tox_env: "check"
+            os: "ubuntu-latest"
+          - name: "docs"
+            python: "3.11"
+            toxpython: "python3.11"
+            tox_env: "docs"
+            os: "ubuntu-latest"
     steps:
-      - name: Checkout Code Repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
         with:
-          python-version: '3.11'
-      # Consider using pre-commit.ci for open source project
-      - name: Run pre-commit
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+          architecture: ${{ matrix.python_arch }}
+      - name: install dependencies
         run: |
-          python -m pip install pre-commit
-          pre-commit run
+          python -mpip install --progress-bar=off .
+          pip --version
+          tox --version
+          pip list --format=freeze
+      - name: test
+        env:
+          TOXPYTHON: "${{ matrix.toxpython }}"
+        run: >
+          tox -e ${{ matrix.tox_env }} -v
 
   # With no caching at all the entire ci process takes 3m to complete!
   pytest:

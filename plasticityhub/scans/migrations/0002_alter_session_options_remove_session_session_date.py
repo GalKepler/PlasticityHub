@@ -6,16 +6,20 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('scans', '0001_initial'),
+        ("scans", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterModelOptions(
-            name='session',
-            options={'ordering': ['session_id'], 'verbose_name': 'Session', 'verbose_name_plural': 'Sessions'},
+            name="session",
+            options={
+                "ordering": ["session_id"],
+                "verbose_name": "Session",
+                "verbose_name_plural": "Sessions",
+            },
         ),
         migrations.RemoveField(
-            model_name='session',
-            name='session_date',
+            model_name="session",
+            name="session_date",
         ),
     ]

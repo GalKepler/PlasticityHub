@@ -6,38 +6,50 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('subjects', '0001_initial'),
+        ("subjects", "0001_initial"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='subject',
-            name='age',
-            field=models.IntegerField(blank=True, help_text='Age of the subject', null=True),
+            model_name="subject",
+            name="age",
+            field=models.IntegerField(
+                blank=True, help_text="Age of the subject", null=True
+            ),
         ),
         migrations.AddField(
-            model_name='subject',
-            name='email',
-            field=models.EmailField(blank=True, help_text='Email address for the subject', max_length=254),
+            model_name="subject",
+            name="email",
+            field=models.EmailField(
+                blank=True, help_text="Email address for the subject", max_length=254
+            ),
         ),
         migrations.AddField(
-            model_name='subject',
-            name='height',
-            field=models.FloatField(blank=True, help_text='Height of the subject in meters', null=True),
+            model_name="subject",
+            name="height",
+            field=models.FloatField(
+                blank=True, help_text="Height of the subject in meters", null=True
+            ),
         ),
         migrations.AddField(
-            model_name='subject',
-            name='phone',
-            field=models.CharField(blank=True, help_text='Phone number for the subject', max_length=20),
+            model_name="subject",
+            name="phone",
+            field=models.CharField(
+                blank=True, help_text="Phone number for the subject", max_length=20
+            ),
         ),
         migrations.AddField(
-            model_name='subject',
-            name='status',
-            field=models.CharField(blank=True, help_text='Status of the subject', max_length=20),
+            model_name="subject",
+            name="status",
+            field=models.CharField(
+                blank=True, help_text="Status of the subject", max_length=20
+            ),
         ),
         migrations.AddField(
-            model_name='subject',
-            name='weight',
-            field=models.FloatField(blank=True, help_text='Weight of the subject in kilograms', null=True),
+            model_name="subject",
+            name="weight",
+            field=models.FloatField(
+                blank=True, help_text="Weight of the subject in kilograms", null=True
+            ),
         ),
     ]

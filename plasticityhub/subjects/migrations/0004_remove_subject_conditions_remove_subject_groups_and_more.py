@@ -6,20 +6,20 @@ from django.db import migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('subjects', '0003_alter_subject_height'),
+        ("subjects", "0003_alter_subject_height"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='subject',
-            name='conditions',
+            model_name="subject",
+            name="conditions",
         ),
         migrations.RemoveField(
-            model_name='subject',
-            name='groups',
+            model_name="subject",
+            name="groups",
         ),
         migrations.RemoveField(
-            model_name='subject',
-            name='studies',
+            model_name="subject",
+            name="studies",
         ),
     ]

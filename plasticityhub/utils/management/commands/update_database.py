@@ -5,10 +5,7 @@ import tqdm
 from django.core.management.base import BaseCommand
 
 from plasticityhub.scans.models import Session
-from plasticityhub.studies.models import Condition
-from plasticityhub.studies.models import Group
-from plasticityhub.studies.models import Lab
-from plasticityhub.studies.models import Study
+from plasticityhub.studies.models import Condition, Group, Lab, Study
 from plasticityhub.subjects.models import Subject
 
 COLUMNS_MAPPING = {
@@ -230,7 +227,7 @@ def load_data_from_sheet(
         gc_kwargs["credentials_filename"] = credentials
     if authorized_user:
         gc_kwargs["authorized_user_filename"] = authorized_user
-    gc = gs.oauth(**gc_kwargs)
+    gc = gs.oauth(**gc_kwargs)  # type: ignore[arg-type]
     sheet = gc.open_by_key(sheet_key)
     worksheet = sheet.get_worksheet(0)
     data = worksheet.get_all_values()

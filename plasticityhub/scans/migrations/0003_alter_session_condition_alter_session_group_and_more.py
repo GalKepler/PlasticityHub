@@ -7,24 +7,42 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('scans', '0002_alter_session_options_remove_session_session_date'),
-        ('studies', '0001_initial'),
+        ("scans", "0002_alter_session_options_remove_session_session_date"),
+        ("studies", "0001_initial"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='session',
-            name='condition',
-            field=models.ForeignKey(help_text='The condition associated with this session', null=True, on_delete=django.db.models.deletion.CASCADE, related_name='sessions', to='studies.condition'),
+            model_name="session",
+            name="condition",
+            field=models.ForeignKey(
+                help_text="The condition associated with this session",
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="sessions",
+                to="studies.condition",
+            ),
         ),
         migrations.AlterField(
-            model_name='session',
-            name='group',
-            field=models.ForeignKey(help_text='The group associated with this session', null=True, on_delete=django.db.models.deletion.CASCADE, related_name='sessions', to='studies.group'),
+            model_name="session",
+            name="group",
+            field=models.ForeignKey(
+                help_text="The group associated with this session",
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="sessions",
+                to="studies.group",
+            ),
         ),
         migrations.AlterField(
-            model_name='session',
-            name='study',
-            field=models.ForeignKey(help_text='The study associated with this session', null=True, on_delete=django.db.models.deletion.CASCADE, related_name='sessions', to='studies.study'),
+            model_name="session",
+            name="study",
+            field=models.ForeignKey(
+                help_text="The study associated with this session",
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="sessions",
+                to="studies.study",
+            ),
         ),
     ]

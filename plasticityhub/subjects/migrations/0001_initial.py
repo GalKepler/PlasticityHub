@@ -8,32 +8,108 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('studies', '0001_initial'),
+        ("studies", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Subject',
+            name="Subject",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('subject_id', models.CharField(help_text='Unique identifier for the subject', max_length=50, unique=True)),
-                ('questionnaire_id', models.CharField(blank=True, help_text='Unique identifier for the questionnaire', max_length=50)),
-                ('first_name', models.CharField(blank=True, max_length=100)),
-                ('last_name', models.CharField(blank=True, max_length=100)),
-                ('date_of_birth', models.DateField(blank=True, null=True)),
-                ('sex', models.CharField(choices=[('M', 'Male'), ('F', 'Female'), ('O', 'Other'), ('U', 'Unknown')], default='U', max_length=1)),
-                ('handedness', models.CharField(choices=[('R', 'Right'), ('L', 'Left'), ('A', 'Ambidextrous'), ('U', 'Unknown')], default='U', max_length=1)),
-                ('comments', models.TextField(blank=True, help_text='Additional comments or notes about the subject')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('conditions', models.ManyToManyField(blank=True, help_text='Conditions that this subject has been assigned to', related_name='subjects', to='studies.condition')),
-                ('groups', models.ManyToManyField(blank=True, help_text='Groups that this subject is a member of', related_name='subjects', to='studies.group')),
-                ('studies', models.ManyToManyField(blank=True, help_text='Studies that this subject is participating in', related_name='subjects', to='studies.study')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "subject_id",
+                    models.CharField(
+                        help_text="Unique identifier for the subject",
+                        max_length=50,
+                        unique=True,
+                    ),
+                ),
+                (
+                    "questionnaire_id",
+                    models.CharField(
+                        blank=True,
+                        help_text="Unique identifier for the questionnaire",
+                        max_length=50,
+                    ),
+                ),
+                ("first_name", models.CharField(blank=True, max_length=100)),
+                ("last_name", models.CharField(blank=True, max_length=100)),
+                ("date_of_birth", models.DateField(blank=True, null=True)),
+                (
+                    "sex",
+                    models.CharField(
+                        choices=[
+                            ("M", "Male"),
+                            ("F", "Female"),
+                            ("O", "Other"),
+                            ("U", "Unknown"),
+                        ],
+                        default="U",
+                        max_length=1,
+                    ),
+                ),
+                (
+                    "handedness",
+                    models.CharField(
+                        choices=[
+                            ("R", "Right"),
+                            ("L", "Left"),
+                            ("A", "Ambidextrous"),
+                            ("U", "Unknown"),
+                        ],
+                        default="U",
+                        max_length=1,
+                    ),
+                ),
+                (
+                    "comments",
+                    models.TextField(
+                        blank=True,
+                        help_text="Additional comments or notes about the subject",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                (
+                    "conditions",
+                    models.ManyToManyField(
+                        blank=True,
+                        help_text="Conditions that this subject has been assigned to",
+                        related_name="subjects",
+                        to="studies.condition",
+                    ),
+                ),
+                (
+                    "groups",
+                    models.ManyToManyField(
+                        blank=True,
+                        help_text="Groups that this subject is a member of",
+                        related_name="subjects",
+                        to="studies.group",
+                    ),
+                ),
+                (
+                    "studies",
+                    models.ManyToManyField(
+                        blank=True,
+                        help_text="Studies that this subject is participating in",
+                        related_name="subjects",
+                        to="studies.study",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Subject',
-                'verbose_name_plural': 'Subjects',
-                'ordering': ['subject_id'],
+                "verbose_name": "Subject",
+                "verbose_name_plural": "Subjects",
+                "ordering": ["subject_id"],
             },
         ),
     ]

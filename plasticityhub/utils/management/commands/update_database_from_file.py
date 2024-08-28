@@ -5,10 +5,7 @@ import tqdm
 from django.core.management.base import BaseCommand
 
 from plasticityhub.scans.models import Session
-from plasticityhub.studies.models import Condition
-from plasticityhub.studies.models import Group
-from plasticityhub.studies.models import Lab
-from plasticityhub.studies.models import Study
+from plasticityhub.studies.models import Condition, Group, Lab, Study
 from plasticityhub.subjects.models import Subject
 
 COLUMNS_MAPPING = {

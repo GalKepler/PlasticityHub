@@ -7,19 +7,29 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('scans', '0004_alter_session_options_session_datetime'),
-        ('studies', '0002_lab'),
+        ("scans", "0004_alter_session_options_session_datetime"),
+        ("studies", "0002_lab"),
     ]
 
     operations = [
         migrations.AddField(
-            model_name='session',
-            name='lab',
-            field=models.ForeignKey(help_text='The lab associated with this session', null=True, on_delete=django.db.models.deletion.CASCADE, related_name='sessions', to='studies.lab'),
+            model_name="session",
+            name="lab",
+            field=models.ForeignKey(
+                help_text="The lab associated with this session",
+                null=True,
+                on_delete=django.db.models.deletion.CASCADE,
+                related_name="sessions",
+                to="studies.lab",
+            ),
         ),
         migrations.AddField(
-            model_name='session',
-            name='scan_tag',
-            field=models.CharField(help_text='The tag associated with the scan (e.g, pre, post, during)', max_length=10, null=True),
+            model_name="session",
+            name="scan_tag",
+            field=models.CharField(
+                help_text="The tag associated with the scan (e.g, pre, post, during)",
+                max_length=10,
+                null=True,
+            ),
         ),
     ]

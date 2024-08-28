@@ -9,29 +9,82 @@ class Migration(migrations.Migration):
     initial = True
 
     dependencies = [
-        ('studies', '0001_initial'),
-        ('subjects', '0004_remove_subject_conditions_remove_subject_groups_and_more'),
+        ("studies", "0001_initial"),
+        ("subjects", "0004_remove_subject_conditions_remove_subject_groups_and_more"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Session',
+            name="Session",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('session_id', models.CharField(help_text='Unique identifier for the session', max_length=50, unique=True)),
-                ('session_date', models.DateField(help_text='The date of the session')),
-                ('notes', models.TextField(blank=True, help_text='Additional notes or observations about the session')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('condition', models.ForeignKey(help_text='The condition associated with this session', on_delete=django.db.models.deletion.CASCADE, related_name='sessions', to='studies.condition')),
-                ('group', models.ForeignKey(help_text='The group associated with this session', on_delete=django.db.models.deletion.CASCADE, related_name='sessions', to='studies.group')),
-                ('study', models.ForeignKey(help_text='The study associated with this session', on_delete=django.db.models.deletion.CASCADE, related_name='sessions', to='studies.study')),
-                ('subject', models.ForeignKey(help_text='The subject associated with this session', on_delete=django.db.models.deletion.CASCADE, related_name='sessions', to='subjects.subject')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "session_id",
+                    models.CharField(
+                        help_text="Unique identifier for the session",
+                        max_length=50,
+                        unique=True,
+                    ),
+                ),
+                ("session_date", models.DateField(help_text="The date of the session")),
+                (
+                    "notes",
+                    models.TextField(
+                        blank=True,
+                        help_text="Additional notes or observations about the session",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                (
+                    "condition",
+                    models.ForeignKey(
+                        help_text="The condition associated with this session",
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="sessions",
+                        to="studies.condition",
+                    ),
+                ),
+                (
+                    "group",
+                    models.ForeignKey(
+                        help_text="The group associated with this session",
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="sessions",
+                        to="studies.group",
+                    ),
+                ),
+                (
+                    "study",
+                    models.ForeignKey(
+                        help_text="The study associated with this session",
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="sessions",
+                        to="studies.study",
+                    ),
+                ),
+                (
+                    "subject",
+                    models.ForeignKey(
+                        help_text="The subject associated with this session",
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="sessions",
+                        to="subjects.subject",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Session',
-                'verbose_name_plural': 'Sessions',
-                'ordering': ['session_date'],
+                "verbose_name": "Session",
+                "verbose_name_plural": "Sessions",
+                "ordering": ["session_date"],
             },
         ),
     ]
