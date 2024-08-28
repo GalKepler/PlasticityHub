@@ -1,7 +1,8 @@
-from pathlib import Path
-
+import environ
+import gspread as gs
 import pandas as pd
 import tqdm
+from django.core.management.base import BaseCommand
 
 from plasticityhub.scans.models import Session
 from plasticityhub.studies.models import Condition
@@ -137,7 +138,7 @@ def get_or_create_subject(subject_kwargs: dict, session_kwargs: dict):
     if subject:
         for key, value in subject_kwargs.items():
             # check the existing attribute
-            if getattr(subject, key) == value:
+            if getattr(subject, key) == value or (not value):
                 continue
             # update only if the session is later than the latest session
             latest_session = subject.sessions.order_by("-session_id").first()
@@ -150,11 +151,14 @@ def get_or_create_subject(subject_kwargs: dict, session_kwargs: dict):
                     setattr(subject, key, value)
 
                 continue
-            # update the attribute
-            setattr(subject, key, value)
+            # update the attribute if value is not empty
+            if value:
+                setattr(subject, key, value)
         subject.save()
     else:
-        subject, _ = Subject.objects.get_or_create(**subject_kwargs)
+        subject, _ = Subject.objects.get_or_create(
+            **{key: value for key, value in subject_kwargs.items() if value},
+        )
     return subject
 
 
@@ -198,31 +202,105 @@ def process_row(row: pd.Series):
     session, _ = Session.objects.get_or_create(**session_kwargs)
 
 
-def update_database_from_file(in_file: Path):
+def load_data_from_sheet(
+    sheet_key: str,
+    credentials: str,
+    authorized_user: str,
+) -> pd.DataFrame:
     """
-    Update the database with information from a CSV file.
+    Load the data from a Google Sheet.
 
     Parameters
     ----------
-    in_file : Path
-        The path to the input CSV file containing the data to update the database with.
-    """
-    # Read the data from the input file
-    df = pd.read_excel(in_file)  # noqa: PD901
+    sheet_key : str
+        The Google Sheet Key.
+    credentials : str
+        The path to the credentials file.
+    authorized_user : str
+        The authorized user email.
 
+    Returns
+    -------
+    pd.DataFrame
+        The data from the Google Sheet.
+    """
+    gc_kwargs = {}
+    if credentials:
+        gc_kwargs["credentials_filename"] = credentials
+    if authorized_user:
+        gc_kwargs["authorized_user_filename"] = authorized_user
+    gc = gs.oauth(**gc_kwargs)
+    sheet = gc.open_by_key(sheet_key)
+    worksheet = sheet.get_worksheet(0)
+    data = worksheet.get_all_values()
+    return pd.DataFrame(data[1:], columns=data[0])
+
+
+def update_database_from_sheet(sheet_key: str, credentials: str, authorized_user: str):
+    """
+    Update the database with information from a Google Sheet.
+
+    Parameters
+    ----------
+    sheet_key : str
+        The Google Sheet Key.
+    credentials : str
+        The path to the credentials file.
+    authorized_user : str
+        The authorized user email.
+    """
+    # Load the data from the Google Sheet
+    crf_df = load_data_from_sheet(
+        sheet_key,
+        credentials,
+        authorized_user,
+    )
     # Reformat the DataFrame
-    df = reformat_df(df)  # noqa: PD901
+    crf_df = reformat_df(crf_df)
 
     # Update the database with the information from the DataFrame
-    for i, row in tqdm.tqdm(df.iterrows()):
+    for i, row in tqdm.tqdm(crf_df.iterrows()):
         try:
             process_row(row)
         except Exception as e:  # noqa: BLE001
-            print(f"Error processing row {i}: {row}")  # noqa: T201
+            print(f"\nError processing row {i}: {row}")  # noqa: T201
             print(e)  # noqa: T201
             break
 
 
-if __name__ == "__main__":
-    infile = "/home/galkepler/Downloads/AllSubjectData.xlsx"
-    update_database_from_file(Path(infile))
+class Command(BaseCommand):
+    help = "Update the database with information from an Excel file."
+    env = environ.Env()
+    sheet_key = env("CRF_SHEET_KEY", default=None)
+    credentials = env("GSPREAD_CREDENTIALS", default=None)
+    authorized_user = env("GSPREAD_AUTHORIZED_USER", default=None)
+
+    def add_arguments(self, parser):
+        parser.add_argument(
+            "sheet_key",
+            nargs="?",
+            type=str,
+            help="Google Sheet Key",
+            default=self.sheet_key,
+        )
+        parser.add_argument(
+            "credentials",
+            type=str,
+            nargs="?",
+            help="Path to the credentials file",
+            default=self.credentials,
+        )
+        parser.add_argument(
+            "authorized_user",
+            type=str,
+            nargs="?",
+            help="Authorized user email",
+            default=self.authorized_user,
+        )
+
+    def handle(self, *args, **kwargs):
+        sheet_key = kwargs["sheet_key"]
+        credentials = kwargs["credentials"]
+        authorized_user = kwargs["authorized_user"]
+        update_database_from_sheet(sheet_key, credentials, authorized_user)
+        self.stdout.write(self.style.SUCCESS("Database updated successfully."))

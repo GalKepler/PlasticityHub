@@ -2,6 +2,7 @@ from pathlib import Path
 
 import pandas as pd
 import tqdm
+from django.core.management.base import BaseCommand
 
 from plasticityhub.scans.models import Session
 from plasticityhub.studies.models import Condition
@@ -195,7 +196,7 @@ def process_row(row: pd.Series):
             "lab": lab,
         },
     )
-    session, _ = Session.objects.get_or_create(**session_kwargs)
+    _, _ = Session.objects.get_or_create(**session_kwargs)  # noqa: RUF100
 
 
 def update_database_from_file(in_file: Path):
@@ -208,13 +209,12 @@ def update_database_from_file(in_file: Path):
         The path to the input CSV file containing the data to update the database with.
     """
     # Read the data from the input file
-    df = pd.read_excel(in_file)  # noqa: PD901
-
+    crf_df = pd.read_excel(in_file)
     # Reformat the DataFrame
-    df = reformat_df(df)  # noqa: PD901
+    crf_df = reformat_df(crf_df)
 
     # Update the database with the information from the DataFrame
-    for i, row in tqdm.tqdm(df.iterrows()):
+    for i, row in tqdm.tqdm(crf_df.iterrows()):
         try:
             process_row(row)
         except Exception as e:  # noqa: BLE001
@@ -223,6 +223,13 @@ def update_database_from_file(in_file: Path):
             break
 
 
-if __name__ == "__main__":
-    infile = "/home/galkepler/Downloads/AllSubjectData.xlsx"
-    update_database_from_file(Path(infile))
+class Command(BaseCommand):
+    help = "Update the database with information from an Excel file."
+
+    def add_arguments(self, parser):
+        parser.add_argument("infile", type=str, help="Path to the input Excel file")
+
+    def handle(self, *args, **kwargs):
+        infile = Path(kwargs["infile"])
+        update_database_from_file(infile)
+        self.stdout.write(self.style.SUCCESS("Database updated successfully."))
