@@ -2,6 +2,7 @@ import datetime
 
 from django.db import models
 
+from plasticityhub.behavioral.questionnaire import QuestionnaireResponse
 from plasticityhub.studies.models import Condition, Group, Lab, Study
 from plasticityhub.subjects.models import Subject
 
@@ -13,6 +14,21 @@ class Session(models.Model):
         related_name="sessions",
         help_text="The subject associated with this session",
     )
+    # The following fields are related to the questionnaire
+    questionnaire_response = models.ForeignKey(
+        QuestionnaireResponse,
+        on_delete=models.CASCADE,
+        related_name="sessions",
+        help_text="The questionnaire response associated with this session",
+        null=True,
+    )
+    time_between_scan_and_questionnaire = models.DurationField(
+        help_text="The time between the scan and the questionnaire",
+        blank=True,
+        null=True,
+    )
+
+    # The following fields are related to the study
     study = models.ForeignKey(
         Study,
         on_delete=models.CASCADE,
