@@ -107,16 +107,22 @@ def update_sessions(subject: Subject, questionnaire_response: QuestionnaireRespo
     for session in subject.sessions.all():
         if session.questionnaire_response is None:
             session.questionnaire_response = questionnaire_response
+            session.time_between_questionnaire_and_scan = (
+                session.timestamp - questionnaire_response.timestamp
+            )
             session.save()
         else:
             # check to see if the current response is closer in time to the session
             if (
                 session.questionnaire_response.timestamp
                 and questionnaire_response.timestamp
-                and abs(session.questionnaire_response.timestamp - session.datetime)
-                > abs(questionnaire_response.timestamp - session.datetime)
+                and abs(session.questionnaire_response.timestamp - session.timestamp)
+                > abs(questionnaire_response.timestamp - session.timestamp)
             ):
                 session.questionnaire_response = questionnaire_response
+                session.time_between_questionnaire_and_scan = (
+                    session.timestamp - questionnaire_response.timestamp
+                )
                 session.save()
 
 
