@@ -7,69 +7,7 @@ from django.core.management.base import BaseCommand
 from plasticityhub.scans.models import Session
 from plasticityhub.studies.models import Condition, Group, Lab, Study
 from plasticityhub.subjects.models import Subject
-
-COLUMNS_MAPPING = {
-    "name": {
-        "scope": "subject",
-        "field": "name",
-    },
-    "dob": {
-        "scope": "subject",
-        "field": "date_of_birth",
-    },
-    "id": {
-        "scope": "subject",
-        "field": "subject_id",
-    },
-    "email": {
-        "scope": "subject",
-        "field": "email",
-    },
-    "cellular no.": {
-        "scope": "subject",
-        "field": "phone",
-    },
-    "gender": {
-        "scope": "subject",
-        "field": "sex",
-    },
-    "height": {
-        "scope": "subject",
-        "field": "height",
-    },
-    "weight": {
-        "scope": "subject",
-        "field": "weight",
-    },
-    "protocol": {
-        "scope": "session",
-        "field": "study",
-    },
-    "study": {
-        "scope": "session",
-        "field": "group",
-    },
-    "group": {
-        "scope": "session",
-        "field": "condition",
-    },
-    "lab": {
-        "scope": "session",
-        "field": "lab",
-    },
-    "scantag": {
-        "scope": "session",
-        "field": "scan_tag",
-    },
-    "qcode": {
-        "scope": "subject",
-        "field": "questionnaire_id",
-    },
-    "scanid": {
-        "scope": "session",
-        "field": "session_id",
-    },
-}
+from plasticityhub.utils.management.database_mapping import COLUMNS_MAPPING
 
 
 def reformat_df(df: pd.DataFrame) -> pd.DataFrame:
@@ -139,10 +77,11 @@ def get_or_create_subject(subject_kwargs: dict, session_kwargs: dict):
             if getattr(subject, key) == value or (not value):
                 continue
             # update only if the session is later than the latest session
-            latest_session = subject.sessions.order_by("-session_id").first()
+            latest_session = subject.sessions.order_by("-timestamp").first()
             if (
                 latest_session
-                and latest_session.session_id > session_kwargs["session_id"]
+                and latest_session.origin_session_id
+                > session_kwargs["origin_session_id"]
             ):
                 # check if the attribute is empty
                 if not getattr(subject, key):
@@ -258,11 +197,11 @@ def update_database_from_sheet(sheet_key: str, credentials: str, authorized_user
 
     # Update the database with the information from the DataFrame
     for i, row in tqdm.tqdm(crf_df.iterrows()):
-        try:
-            process_row(row)
-        except Exception as e:  # noqa: BLE001
-            print(f"\nError processing row {i}: {row}")  # noqa: T201
-            print(e)  # noqa: T201
+        # try:
+        process_row(row)
+        # except Exception as e:  # noqa: BLE001
+        #     print(f"\nError processing row {i}: {row}")  # noqa: T201
+        #     print(e)  # noqa: T201
 
 
 class Command(BaseCommand):
