@@ -2880,16 +2880,6 @@ files = [
 windows-terminal = ["colorama (>=0.4.6)"]
 
 [[package]]
-name = "pygraphviz"
-version = "1.13"
-description = "Python interface to Graphviz"
-optional = false
-python-versions = ">=3.10"
-files = [
-    {file = "pygraphviz-1.13.tar.gz", hash = "sha256:6ad8aa2f26768830a5a1cfc8a14f022d13df170a8f6fdfd68fd1aa1267000964"},
-]
-
-[[package]]
 name = "pypng"
 version = "0.20220715.0"
 description = "Pure Python library for saving and loading PNG images"
@@ -4572,4 +4562,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "b9a0c51f1584ada4f3f81de61d43d34b4b4ae79a0bcaeeaca040003e83b88775"
+content-hash = "674dbcb69251aea2af52d6d0b7d2cf17f46bbed88ae5e0223039e9d14399e9db"
