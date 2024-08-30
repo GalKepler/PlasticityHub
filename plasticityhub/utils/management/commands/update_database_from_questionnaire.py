@@ -32,7 +32,7 @@ def reformat_df(df: pd.DataFrame) -> pd.DataFrame:
     for col, mapping in QUESTIONNAIRE_MAPPING.items():
         if col not in df.columns:
             continue
-        mapper = mapping.get("mapper")
+        mapper = mapping.get("mapper")  # type: ignore[attr-defined]
         if mapper:
             df[col] = df[col].replace(mapper)
     return df
@@ -107,7 +107,7 @@ def update_sessions(subject: Subject, questionnaire_response: QuestionnaireRespo
     for session in subject.sessions.all():
         if session.questionnaire_response is None:
             session.questionnaire_response = questionnaire_response
-            session.time_between_questionnaire_and_scan = (
+            session.time_between_questionnaire_and_scan = (  # type: ignore[attr-defined]
                 session.timestamp - questionnaire_response.timestamp
             )
             session.save()
@@ -120,7 +120,7 @@ def update_sessions(subject: Subject, questionnaire_response: QuestionnaireRespo
                 > abs(questionnaire_response.timestamp - session.timestamp)
             ):
                 session.questionnaire_response = questionnaire_response
-                session.time_between_questionnaire_and_scan = (
+                session.time_between_questionnaire_and_scan = (  # type: ignore[attr-defined]
                     session.timestamp - questionnaire_response.timestamp
                 )
                 session.save()
@@ -144,9 +144,9 @@ def process_row(row: pd.Series):
         print(f"Multiple subjects with ID {row.get('subject.code')} found")
         return
     subject = subjects.first()
-    questionnaire_response = make_questionnaire_response(subject, row)
-    subject.questionnaire_responses.add(questionnaire_response)
-    update_sessions(subject, questionnaire_response)
+    questionnaire_response = make_questionnaire_response(subject, row)  # type: ignore[arg-type]
+    subject.questionnaire_responses.add(questionnaire_response)  # type: ignore[union-attr]
+    update_sessions(subject, questionnaire_response)  # type: ignore[arg-type]
 
 
 def update_database_from_sheet(sheet_key: str, credentials: str, authorized_user: str):
