@@ -197,11 +197,11 @@ def update_database_from_sheet(sheet_key: str, credentials: str, authorized_user
 
     # Update the database with the information from the DataFrame
     for i, row in tqdm.tqdm(crf_df.iterrows()):
-        # try:
-        process_row(row)
-        # except Exception as e:  # noqa: BLE001
-        #     print(f"\nError processing row {i}: {row}")  # noqa: T201
-        #     print(e)  # noqa: T201
+        try:
+            process_row(row)
+        except Exception as e:  # noqa: BLE001
+            print(f"\nError processing row {i}: {row}")  # noqa: T201
+            print(e)  # noqa: T201
 
 
 class Command(BaseCommand):
