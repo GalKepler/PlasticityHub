@@ -135,8 +135,8 @@ def process_row(row: pd.Series):
     row : pd.Series
         The row to process.
     """
-    questionnaire_id = row.get("subject.code")
-    subjects = Subject.objects.filter(questionnaire_id=questionnaire_id)
+    subject_code = row.get("subject.code")
+    subjects = Subject.objects.filter(subject_code=subject_code)
     if not subjects.exists():
         print(f"Subject with ID {row.get('subject.code')} not found")
         return

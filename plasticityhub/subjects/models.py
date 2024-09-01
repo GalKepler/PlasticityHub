@@ -22,10 +22,10 @@ class Subject(models.Model):
         help_text="Unique identifier for the subject",
         unique=True,
     )
-    questionnaire_id = models.CharField(
+    subject_code = models.CharField(
         max_length=50,
         blank=True,
-        help_text="Unique identifier for the questionnaire",
+        help_text="Unique identifier for questionnaires",
     )
     name = models.CharField(
         max_length=100,
