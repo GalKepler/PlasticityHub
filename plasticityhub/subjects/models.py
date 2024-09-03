@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
 
+from plasticityhub.studies.models import Condition, Group, Study
+
 
 class Subject(models.Model):
     SUBJECT_SEX_CHOICES = [
@@ -16,6 +18,22 @@ class Subject(models.Model):
         ("A", "Ambidextrous"),
         ("U", "Unknown"),
     ]
+
+    studies = models.ManyToManyField(
+        Study,
+        related_name="subjects",
+        help_text="Studies associated with this subject",
+    )
+    groups = models.ManyToManyField(
+        Group,
+        related_name="subjects",
+        help_text="Groups associated with this subject",
+    )
+    conditions = models.ManyToManyField(
+        Condition,
+        related_name="subjects",
+        help_text="Conditions associated with this subject",
+    )
 
     subject_id = models.CharField(
         max_length=50,
