@@ -3,6 +3,7 @@ import datetime
 from django.db import models
 
 from plasticityhub.behavioral.questionnaire import QuestionnaireResponse
+from plasticityhub.behavioral.seca import SECAMeasurement
 from plasticityhub.studies.models import Condition, Group, Lab, Study
 from plasticityhub.subjects.models import Subject
 
@@ -24,6 +25,18 @@ class Session(models.Model):
     )
     time_between_scan_and_questionnaire = models.DurationField(
         help_text="The time between the scan and the questionnaire",
+        blank=True,
+        null=True,
+    )
+    seca_measurement = models.ForeignKey(
+        SECAMeasurement,
+        on_delete=models.CASCADE,
+        related_name="sessions",
+        help_text="The SECA measurement associated with this session",
+        null=True,
+    )
+    time_between_scan_and_seca = models.DurationField(
+        help_text="The time between the scan and the SECA measurement",
         blank=True,
         null=True,
     )
@@ -72,6 +85,11 @@ class Session(models.Model):
         unique=True,
         help_text="Unique identifier for the session",
     )
+    session_id = models.CharField(
+        max_length=50,
+        help_text="Unique identifier for the session",
+        blank=True,
+    )
     notes = models.TextField(
         blank=True,
         help_text="Additional notes or observations about the session",
@@ -79,6 +97,8 @@ class Session(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     timestamp = models.DateTimeField(editable=False, null=True)
+    date = models.DateField(editable=False, null=True)
+    time = models.TimeField(editable=False, null=True)
 
     class Meta:
         verbose_name = "Session"
@@ -90,11 +110,13 @@ class Session(models.Model):
 
     def save(self, *args, **kwargs):
         # Automatically set the inferred_datetime field
-        self.timestamp = self.inferred_datetime
+        self.timestamp = self.infer_timestamp()
+        self.date = self.infer_date()
+        self.time = self.infer_time()
+        self.session_id = self.infer_session_id()
         super().save(*args, **kwargs)
 
-    @property
-    def inferred_datetime(self):
+    def infer_timestamp(self):
         """
         Return the datetime of the session based on the session
         """
@@ -102,23 +124,20 @@ class Session(models.Model):
             self.origin_session_id, "%Y%m%d_%H%M"
         ).astimezone()
 
-    @property
-    def date(self):
+    def infer_date(self):
         """
         Return the date of the session
         """
-        return self.inferred_datetime.date()
+        return self.timestamp.date()
 
-    @property
-    def time(self):
+    def infer_time(self):
         """
         Return the time of the session
         """
-        return self.inferred_datetime.time()
+        return self.timestamp.time()
 
-    @property
-    def session_id(self):
+    def infer_session_id(self):
         """
         Return the raw session ID
         """
-        return datetime.datetime.strftime(self.inferred_datetime, format="%Y%m%d%H%M")
+        return datetime.datetime.strftime(self.timestamp, format="%Y%m%d%H%M")

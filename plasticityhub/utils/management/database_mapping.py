@@ -53,7 +53,7 @@ COLUMNS_MAPPING = {
     },
     "qcode": {
         "scope": "subject",
-        "field": "questionnaire_id",
+        "field": "subject_code",
     },
     "scanid": {
         "scope": "session",

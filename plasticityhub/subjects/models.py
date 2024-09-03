@@ -1,6 +1,8 @@
 from django.db import models
 from django.utils import timezone
 
+from plasticityhub.studies.models import Condition, Group, Study
+
 
 class Subject(models.Model):
     SUBJECT_SEX_CHOICES = [
@@ -17,15 +19,31 @@ class Subject(models.Model):
         ("U", "Unknown"),
     ]
 
+    studies = models.ManyToManyField(
+        Study,
+        related_name="subjects",
+        help_text="Studies associated with this subject",
+    )
+    groups = models.ManyToManyField(
+        Group,
+        related_name="subjects",
+        help_text="Groups associated with this subject",
+    )
+    conditions = models.ManyToManyField(
+        Condition,
+        related_name="subjects",
+        help_text="Conditions associated with this subject",
+    )
+
     subject_id = models.CharField(
         max_length=50,
         help_text="Unique identifier for the subject",
         unique=True,
     )
-    questionnaire_id = models.CharField(
+    subject_code = models.CharField(
         max_length=50,
         blank=True,
-        help_text="Unique identifier for the questionnaire",
+        help_text="Unique identifier for questionnaires",
     )
     name = models.CharField(
         max_length=100,
