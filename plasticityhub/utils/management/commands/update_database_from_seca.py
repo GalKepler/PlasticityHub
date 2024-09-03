@@ -30,7 +30,7 @@ def reformat_df(df: pd.DataFrame) -> pd.DataFrame:
     for col, mapping in SECA_MAPPING.items():
         if col not in df.columns:
             continue
-        mapper = mapping.get("mapper")  # type: ignore[attr-defined]
+        mapper = mapping.get("mapper")
         if mapper:
             df[col] = df[col].replace(mapper)
     return df
@@ -71,8 +71,8 @@ def update_sessions(subject: Subject, seca_measurement: SECAMeasurement):
     for session in subject.sessions.all():
         if session.seca_measurement is None:
             session.seca_measurement = seca_measurement
-            session.time_between_scan_and_seca = (  # type: ignore[attr-defined]
-                session.timestamp - seca_measurement.timestamp
+            session.time_between_scan_and_seca = (
+                session.timestamp - seca_measurement.timestamp  # type: ignore[operator]
             )
             session.save()
         else:
@@ -80,12 +80,12 @@ def update_sessions(subject: Subject, seca_measurement: SECAMeasurement):
             if (
                 session.seca_measurement.timestamp
                 and seca_measurement.timestamp
-                and abs(session.seca_measurement.timestamp - session.timestamp)
-                > abs(seca_measurement.timestamp - session.timestamp)
+                and abs(session.seca_measurement.timestamp - session.timestamp)  # type: ignore[operator]
+                > abs(seca_measurement.timestamp - session.timestamp)  # type: ignore[operator]
             ):
                 session.seca_measurement = seca_measurement
-                session.time_between_scan_and_seca = (  # type: ignore[attr-defined]
-                    session.timestamp - seca_measurement.timestamp
+                session.time_between_scan_and_seca = (
+                    session.timestamp - seca_measurement.timestamp  # type: ignore[operator]
                 )
                 session.save()
 
@@ -119,10 +119,10 @@ def process_row(row: pd.Series):
         )
         return
     session = sessions.first()
-    subject = session.subject
-    seca_measurement = make_seca_measurement(subject, row)  # type: ignore[arg-type]
-    subject.seca_measurements.add(seca_measurement)  # type: ignore[union-attr]
-    update_sessions(subject, seca_measurement)  # type: ignore[arg-type]
+    subject = session.subject  # type: ignore[union-attr]
+    seca_measurement = make_seca_measurement(subject, row)
+    subject.seca_measurements.add(seca_measurement)
+    update_sessions(subject, seca_measurement)
 
 
 def update_database_from_file(file_path: str):

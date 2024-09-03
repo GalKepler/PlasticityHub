@@ -128,16 +128,16 @@ class Session(models.Model):
         """
         Return the date of the session
         """
-        return self.timestamp.date()
+        return self.timestamp.date()  # type: ignore[union-attr]
 
     def infer_time(self):
         """
         Return the time of the session
         """
-        return self.timestamp.time()
+        return self.timestamp.time()  # type: ignore[union-attr]
 
     def infer_session_id(self):
         """
         Return the raw session ID
         """
-        return datetime.datetime.strftime(self.timestamp, format="%Y%m%d%H%M")
+        return datetime.datetime.strftime(self.timestamp, format="%Y%m%d%H%M")  # type: ignore[arg-type]
