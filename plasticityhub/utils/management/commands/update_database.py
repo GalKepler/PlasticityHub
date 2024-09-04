@@ -127,6 +127,10 @@ def process_row(row: pd.Series):
         study=study,
     )
     lab, _ = Lab.objects.get_or_create(name=session_kwargs["lab"])
+    subject.studies.add(study)
+    subject.groups.add(group)
+    subject.conditions.add(condition)
+    subject.save()
     session_kwargs.update(
         {
             "subject": subject,
@@ -200,8 +204,10 @@ def update_database_from_sheet(sheet_key: str, credentials: str, authorized_user
         try:
             process_row(row)
         except Exception as e:  # noqa: BLE001
-            print(f"\nError processing row {i}: {row}")  # noqa: T201
-            print(e)  # noqa: T201
+            print(f"\nError processing row {i}:\n")  # noqa: T201
+            print(f"name: {row['name']}")
+            print(f"scanid: {row['scanid']}")
+            print(f"Error: {e}")  # noqa: T201
 
 
 class Command(BaseCommand):
