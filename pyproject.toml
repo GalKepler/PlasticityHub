@@ -55,6 +55,8 @@ sphinx-rtd-theme = {git = "https://github.com/readthedocs/sphinx_rtd_theme.git"}
 djangoviz = "^0.1.1"
 matplotlib = "^3.9.2"
 seaborn = "^0.13.2"
+pybids = "^0.17.0"
+kepost = "^0.1.0"
 
 
 [tool.poetry.group.dev.dependencies]

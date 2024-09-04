@@ -91,6 +91,7 @@ LOCAL_APPS = [
     "plasticityhub.studies",
     "plasticityhub.scans",
     "plasticityhub.behavioral",
+    "plasticityhub.procedures",
     "plasticityhub.utils",
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps

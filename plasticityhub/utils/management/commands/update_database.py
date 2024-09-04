@@ -7,7 +7,7 @@ from django.core.management.base import BaseCommand
 from plasticityhub.scans.models import Session
 from plasticityhub.studies.models import Condition, Group, Lab, Study
 from plasticityhub.subjects.models import Subject
-from plasticityhub.utils.management.database_mapping import COLUMNS_MAPPING
+from plasticityhub.utils.management.static.database_mapping import COLUMNS_MAPPING
 
 
 def reformat_df(df: pd.DataFrame) -> pd.DataFrame:

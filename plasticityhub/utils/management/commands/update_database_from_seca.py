@@ -8,7 +8,10 @@ from plasticityhub.behavioral.questionnaire import QuestionnaireResponse
 from plasticityhub.behavioral.seca import SECAMeasurement
 from plasticityhub.scans.models import Session
 from plasticityhub.subjects.models import Subject
-from plasticityhub.utils.management.seca_mapping import COLUMNS_MAPPING, SECA_MAPPING
+from plasticityhub.utils.management.static.seca_mapping import (
+    COLUMNS_MAPPING,
+    SECA_MAPPING,
+)
 
 
 def reformat_df(df: pd.DataFrame) -> pd.DataFrame:

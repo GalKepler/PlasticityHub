@@ -7,7 +7,7 @@ from django.core.management.base import BaseCommand
 from plasticityhub.behavioral.questionnaire import QuestionnaireResponse
 from plasticityhub.scans.models import Session
 from plasticityhub.subjects.models import Subject
-from plasticityhub.utils.management.questionnaire_mapping import (
+from plasticityhub.utils.management.static.questionnaire_mapping import (
     COLUMNS_MAPPING,
     QUESTIONNAIRE_MAPPING,
 )
