@@ -22,6 +22,12 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument(
+            "--software",
+            type=str,
+            default="mrtrix3",
+            help="The name of the software used to reconstruct the tensors.",
+        )
+        parser.add_argument(
             "--destination",
             type=str,
             help="The path to store the output files.",
