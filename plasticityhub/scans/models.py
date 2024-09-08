@@ -1,6 +1,8 @@
 import datetime
 
+import numpy as np
 from django.db import models
+from django.utils import timezone
 
 from plasticityhub.behavioral.questionnaire import QuestionnaireResponse
 from plasticityhub.behavioral.seca import SECAMeasurement
@@ -99,6 +101,11 @@ class Session(models.Model):
     timestamp = models.DateTimeField(editable=False, null=True)
     date = models.DateField(editable=False, null=True)
     time = models.TimeField(editable=False, null=True)
+    age_at_scan = models.FloatField(
+        help_text="Age of the subject at the time of the scan",
+        blank=True,
+        null=True,
+    )
 
     class Meta:
         verbose_name = "Session"
@@ -114,6 +121,7 @@ class Session(models.Model):
         self.date = self.infer_date()
         self.time = self.infer_time()
         self.session_id = self.infer_session_id()
+        self.age_at_scan = self.infer_age_at_scan()
         super().save(*args, **kwargs)
 
     def infer_timestamp(self):
@@ -141,3 +149,16 @@ class Session(models.Model):
         Return the raw session ID
         """
         return datetime.datetime.strftime(self.timestamp, format="%Y%m%d%H%M")  # type: ignore[arg-type]
+
+    def infer_age_at_scan(self):
+        """
+        Return the age of the subject at the time of the scan
+        """
+        if self.subject.date_of_birth:
+            return np.round(
+                datetime.timedelta(
+                    days=(self.timestamp.date() - self.subject.date_of_birth).days
+                ).days
+                / 365.25,
+                2,
+            )
