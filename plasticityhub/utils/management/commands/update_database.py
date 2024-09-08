@@ -7,7 +7,7 @@ from django.core.management.base import BaseCommand
 from plasticityhub.scans.models import Session
 from plasticityhub.studies.models import Condition, Group, Lab, Study
 from plasticityhub.subjects.models import Subject
-from plasticityhub.utils.management.database_mapping import COLUMNS_MAPPING
+from plasticityhub.utils.management.static.database_mapping import COLUMNS_MAPPING
 
 
 def reformat_df(df: pd.DataFrame) -> pd.DataFrame:
@@ -170,8 +170,13 @@ def load_data_from_sheet(
         gc_kwargs["credentials_filename"] = credentials
     if authorized_user:
         gc_kwargs["authorized_user_filename"] = authorized_user
-    gc = gs.oauth(**gc_kwargs)  # type: ignore[arg-type]
-    sheet = gc.open_by_key(sheet_key)
+    try:
+        gc = gs.oauth(**gc_kwargs)  # type: ignore[arg-type]
+        sheet = gc.open_by_key(sheet_key)
+    except Exception as e:  # noqa: BLE001
+        print(f"Error loading the Google Sheet: {e}")  # noqa: T201
+        gc = gs.oauth()
+        sheet = gc.open_by_key(sheet_key)
     worksheet = sheet.get_worksheet(0)
     data = worksheet.get_all_values()
     return pd.DataFrame(data[1:], columns=data[0])
