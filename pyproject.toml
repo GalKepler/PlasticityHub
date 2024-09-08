@@ -7,7 +7,7 @@ readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-django = "5.1"
+django = "5.1.1"
 python-environ = "^0.4.54"
 whitenoise = "6.7.0"
 django-crispy-forms = "2.3"
@@ -18,8 +18,8 @@ argon2-cffi = "23.1.0"
 redis = "5.0.8"
 hiredis = "3.0.0"
 django-environ = "0.11.2"
-django-model-utils = "4.5.1"
-django-allauth = {version = "64.2.0", extras = ["mfa"]}
+django-model-utils = "5.0.0"
+django-allauth = {version = "64.2.1", extras = ["mfa"]}
 django-redis = "5.4.0"
 werkzeug = {version = "3.0.4", extras = ["watchdog"]}
 ipdb = "0.13.13"
@@ -29,7 +29,7 @@ django-stubs = {version = "5.0.4", extras = ["compatible-mypy"]}
 pytest = "8.3.2"
 pytest-sugar = "1.0.0"
 sphinx = "8.0.2"
-sphinx-autobuild = "2024.4.16"
+sphinx-autobuild = "2024.9.3"
 ruff = "0.6.3"
 coverage = "7.6.1"
 djlint = "1.35.2"
@@ -38,7 +38,7 @@ factory-boy = "3.3.1"
 django-debug-toolbar = "4.4.6"
 django-extensions = "3.2.3"
 django-coverage-plugin = "3.1.0"
-pytest-django = "4.8.0"
+pytest-django = "4.9.0"
 gunicorn = "23.0.0"
 django-anymail = {version = "11.1", extras = ["mailgun"]}
 jupyter = "^1.0.0"
