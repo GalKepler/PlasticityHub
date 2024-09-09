@@ -1,4 +1,5 @@
-import json
+import pickle
+import warnings
 from copy import deepcopy
 from pathlib import Path
 from typing import Optional
@@ -21,6 +22,8 @@ from plasticityhub.utils.management.static.procedures.kepost.outputs import (
     TENSORS_PARAMETERS,
 )
 from plasticityhub.utils.management.static.procedures.utils import parse_session
+
+warnings.filterwarnings("ignore")
 
 
 def add_atlases_to_queries(base_queries: list[dict], atlases: dict):
@@ -95,10 +98,10 @@ def add_session_and_subject_details(df: pd.DataFrame, procedure: Procedure):
     df["session_id"] = session.session_id
     df["timestamp"] = session.timestamp
     df["scan_tag"] = session.scan_tag
-    df["study"] = session.study
-    df["group"] = session.group
-    df["condition"] = session.condition
-    df["lab"] = session.lab
+    df["study"] = session.study.name
+    df["group"] = session.group.name
+    df["condition"] = session.condition.name
+    df["lab"] = session.lab.name
     df["age_at_scan"] = session.age_at_scan
     return df
 
@@ -135,7 +138,6 @@ def aggregate_tensor_results(procedures: QuerySet, destination: str, overwrite: 
     tensor_queries = generate_queries(TENSORS_PARAMETERS, atlases=AVAILABLE_ATLASES)
     for full_query in tqdm.tqdm(tensor_queries, desc="Aggregating tensor results"):
         query = full_query.get("query")
-        print(query)
         atlas = full_query.get("atlas")
         query_df = pd.DataFrame()
         for procedure in procedures:
@@ -149,8 +151,9 @@ def aggregate_tensor_results(procedures: QuerySet, destination: str, overwrite: 
             continue
         query_destination = generate_destination_path(destination, query)
         query_df.to_pickle(query_destination / "data.pkl")
-        with open(str(query_df / "atlas.json"), "w") as f:
-            json.dump(atlas, f, indent=4)
+        # save atlas to pickle file
+        with open(query_destination / "atlas.pkl", "wb") as f:
+            pickle.dump(atlas, f)
 
 
 def aggregate_results(destination: str, overwrite: bool):
