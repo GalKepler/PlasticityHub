@@ -12,16 +12,11 @@ from django.core.management.base import BaseCommand
 from django.db.models import QuerySet
 
 from plasticityhub.procedures.models import Procedure
-from plasticityhub.scans.models import Session
-from plasticityhub.studies.models import Condition, Group, Lab, Study
-from plasticityhub.subjects.models import Subject
-from plasticityhub.utils.management.static.database_mapping import COLUMNS_MAPPING
 from plasticityhub.utils.management.static.procedures.kepost.outputs import (
     AVAILABLE_ATLASES,
     QC_PARAMETERS,
     TENSORS_PARAMETERS,
 )
-from plasticityhub.utils.management.static.procedures.utils import parse_session
 
 warnings.filterwarnings("ignore")
 
@@ -41,7 +36,15 @@ def add_atlases_to_queries(base_queries: list[dict], atlases: dict):
     for query in base_queries:
         for atlas in atlases:
             updated_query = deepcopy(query)
-            updated_query["query"].update({"atlas": atlas})
+            if "schaefer" in atlas:
+                atlas_name = atlas.split("_")[0]
+                density = atlas.split("_")[1]
+                div = atlas.split("_")[2] + "networks"
+                atlas_query = {"atlas": atlas_name, "den": density, "division": div}
+            else:
+                atlas_name = atlas
+                atlas_query = {"atlas": atlas_name}
+            updated_query["query"].update(atlas_query)
             updated_query["atlas"] = {atlas: atlases[atlas]}
             queries.append(updated_query)
     return queries
@@ -138,6 +141,12 @@ def aggregate_tensor_results(procedures: QuerySet, destination: str, overwrite: 
     tensor_queries = generate_queries(TENSORS_PARAMETERS, atlases=AVAILABLE_ATLASES)
     for full_query in tqdm.tqdm(tensor_queries, desc="Aggregating tensor results"):
         query = full_query.get("query")
+        print(query)
+        query_destination = generate_destination_path(destination, query)
+        data_destination = query_destination / "data.pkl"
+        atlas_destination = query_destination / "atlas.pkl"
+        if data_destination.exists() and atlas_destination.exists() and not overwrite:
+            continue
         atlas = full_query.get("atlas")
         query_df = pd.DataFrame()
         for procedure in procedures:
@@ -149,11 +158,44 @@ def aggregate_tensor_results(procedures: QuerySet, destination: str, overwrite: 
             query_df = pd.concat([query_df, p_df], ignore_index=True)
         if query_df.empty:
             continue
-        query_destination = generate_destination_path(destination, query)
-        query_df.to_pickle(query_destination / "data.pkl")
+        query_df.to_pickle(data_destination)
         # save atlas to pickle file
-        with open(query_destination / "atlas.pkl", "wb") as f:
+        with open(atlas_destination, "wb") as f:
             pickle.dump(atlas, f)
+
+
+def aggregate_qc_results(procedures: QuerySet, destination: str, overwrite: bool):
+    """
+    Aggregate the results of the quality control.
+
+    Parameters
+    ----------
+    destination : str
+        The path to store the output files.
+    overwrite : bool
+        Whether to overwrite existing files.
+    """
+    qc_queries = generate_queries(QC_PARAMETERS)
+    for full_query in tqdm.tqdm(qc_queries, desc="Aggregating QC results"):
+        query = full_query.get("query")
+        query_destination = generate_destination_path(destination, query)
+        data_destination = query_destination / "data.pkl"
+        if data_destination.exists() and not overwrite:
+            continue
+        query_df = pd.DataFrame()
+        for procedure in procedures:
+            fname = procedure.get(query)
+            if not fname:
+                continue
+            if fname.endswith(".csv"):
+                p_df = pd.read_csv(fname, index_col=0)
+            elif fname.endswith(".json"):
+                p_df = pd.read_json(fname, orient="index").T
+            p_df = add_session_and_subject_details(p_df, procedure)
+            query_df = pd.concat([query_df, p_df], ignore_index=True)
+        if query_df.empty:
+            continue
+        query_df.to_pickle(data_destination)
 
 
 def aggregate_results(destination: str, overwrite: bool):
@@ -169,6 +211,7 @@ def aggregate_results(destination: str, overwrite: bool):
     """
     procedures = Procedure.objects.filter(name="kepost")
     aggregate_tensor_results(procedures, destination, overwrite)
+    aggregate_qc_results(procedures, destination, overwrite)
 
 
 class Command(BaseCommand):

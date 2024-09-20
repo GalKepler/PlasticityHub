@@ -155,10 +155,18 @@ class Session(models.Model):
         Return the age of the subject at the time of the scan
         """
         if self.subject.date_of_birth:
+            try:
+                dob = self.subject.date_of_birth.date()
+            except AttributeError:
+                dob = self.subject.date_of_birth
+            # dob = (
+            #     self.subject.date_of_birth
+            #     if isinstance(self.subject.date_of_birth, datetime.date)
+            #     else self.subject.date_of_birth.date()
+            # )
             return np.round(
-                datetime.timedelta(
-                    days=(self.timestamp.date() - self.subject.date_of_birth).days
-                ).days
+                datetime.timedelta(days=(self.timestamp.date() - dob).days).days
                 / 365.25,
                 2,
             )
+        return None

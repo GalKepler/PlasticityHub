@@ -11,3 +11,8 @@ TENSORS_PARAMETERS = {
     "mrtrix3": {"entity": "measure", "values": MRTRIX3_TENSOR_PARAMETERS},
 }
 QC_PARAMETERS = {"qc": {"entity": "desc", "values": ["snr", "eddy"]}}
+CONNECTOME_PARAMETERS = {
+    "iFOD2": {"entity": "desc", "values": ["unfiltered"]},
+    "SDStream": {"entity": "desc", "values": ["unfiltered"]},
+}
+SIFT2_PARAMETERS = {"desc": "SIFT2"}
