@@ -125,9 +125,6 @@ class Subject(models.Model):
             )
         return None
 
-    def get_age(self):
-        return self.calculate_age()
-
     def calculate_bmi(self):
         """
         Calculate the body mass index (BMI)

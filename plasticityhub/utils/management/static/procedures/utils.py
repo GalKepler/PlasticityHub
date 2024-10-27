@@ -3,7 +3,6 @@ from json import loads
 from pathlib import Path
 from typing import Union
 
-from bids import BIDSLayout
 from bids.layout import Config, parse_file_entities
 
 

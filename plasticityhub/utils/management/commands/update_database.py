@@ -3,6 +3,7 @@ import gspread as gs
 import pandas as pd
 import tqdm
 from django.core.management.base import BaseCommand
+from pydrive.auth import GoogleAuth
 
 from plasticityhub.scans.models import Session
 from plasticityhub.studies.models import Condition, Group, Lab, Study
@@ -38,7 +39,7 @@ def reformat_df(df: pd.DataFrame) -> pd.DataFrame:
     df["id"] = df["id"].astype(str).str.zfill(9)
 
     # Convert Sex to uppercase
-    df["gender"] = df["gender"].apply(lambda x: x[0].upper())
+    df["gender"] = df["gender"].apply(lambda x: x[0].upper() if x else "U")
 
     # Convert the protocol, study, and group to title case
     for col in ["protocol", "study", "group"]:
@@ -47,6 +48,11 @@ def reformat_df(df: pd.DataFrame) -> pd.DataFrame:
     df["scantag"] = df["scantag"].str.lower()
 
     df["name"] = df["name"].str.title().fillna("Unknown Unknown")
+
+    # height - convert rows (where height is a number) to cm
+    df["height"] = df["height"].apply(
+        lambda x: x if x == "" else x if pd.isna(x) else float(x) * 100
+    )
     return df
 
 
@@ -143,6 +149,38 @@ def process_row(row: pd.Series):
     session, _ = Session.objects.get_or_create(**session_kwargs)
 
 
+def google_authenticate(
+    credentials: str, authorized_user: str, force_new: bool = False
+):
+    """
+    Authenticate with Google.
+
+    Parameters
+    ----------
+    credentials : str
+        The path to the credentials file.
+    authorized_user : str
+        The authorized user email.
+    """
+    # Authenticate and create the PyDrive client
+    gauth = GoogleAuth()
+    gauth.settings["client_config_file"] = credentials
+    # Check whether the credentials are expired
+    if gauth.credentials is None or gauth.access_token_expired or force_new:
+        print("Google credentials are expired or not found.")  # noqa: T201
+        print("Authenticating with Google...")  # noqa: T201
+        # Authenticate if credentials are not there
+        # gauth.LocalWebserverAuth()
+        gauth.CommandLineAuth()
+        gauth.SaveCredentialsFile(authorized_user)
+    else:
+        # Initialize the saved credentials
+        gauth.LoadCredentialsFile(authorized_user)
+        gauth.Authorize()
+    # Save the current credentials to a file for future use
+    gauth.SaveCredentialsFile(authorized_user)
+
+
 def load_data_from_sheet(
     sheet_key: str,
     credentials: str,
@@ -165,6 +203,8 @@ def load_data_from_sheet(
     pd.DataFrame
         The data from the Google Sheet.
     """
+    # Authenticate with Google
+    google_authenticate(credentials, authorized_user)
     gc_kwargs = {}
     if credentials:
         gc_kwargs["credentials_filename"] = credentials
@@ -213,6 +253,8 @@ def update_database_from_sheet(sheet_key: str, credentials: str, authorized_user
             print(f"name: {row['name']}")
             print(f"scanid: {row['scanid']}")
             print(f"Error: {e}")  # noqa: T201
+            if "date" in e.args[0]:
+                raise e
 
 
 class Command(BaseCommand):
@@ -224,21 +266,21 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument(
-            "sheet_key",
+            "--sheet_key",
             nargs="?",
             type=str,
             help="Google Sheet Key",
             default=self.sheet_key,
         )
         parser.add_argument(
-            "credentials",
+            "--credentials",
             type=str,
             nargs="?",
             help="Path to the credentials file",
             default=self.credentials,
         )
         parser.add_argument(
-            "authorized_user",
+            "--authorized_user",
             type=str,
             nargs="?",
             help="Authorized user email",
