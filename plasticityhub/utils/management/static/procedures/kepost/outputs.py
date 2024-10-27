@@ -7,8 +7,8 @@ from kepost.workflows.diffusion.procedures.tensor_estimations.mrtrix3 import (
 )
 
 TENSORS_PARAMETERS = {
-    "dipy": {"entity": "measure", "values": DIPY_TENSOR_PARAMETERS},
     "mrtrix3": {"entity": "measure", "values": MRTRIX3_TENSOR_PARAMETERS},
+    "dipy": {"entity": "measure", "values": DIPY_TENSOR_PARAMETERS},
 }
 QC_PARAMETERS = {"qc": {"entity": "desc", "values": ["snr", "eddy"]}}
 CONNECTOME_PARAMETERS = {

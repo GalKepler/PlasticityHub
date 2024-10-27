@@ -14,7 +14,7 @@ def init_connectome_wf(
     tck_weights: bool,
     sift2_weights: str,
     out_data: str,
-    out_assignments: str,
+    # out_assignments: str,
     nthreads: int = 1,
     # name: str = "connectome_wf",
 ) -> Workflow:
@@ -42,18 +42,18 @@ def init_connectome_wf(
                 "stat_edge",
                 "sift2_weights",
                 "out_data",
-                "out_assignments",
+                # "out_assignments",
             ]
         ),
         name="inputnode",
     )
-    inputnode.inputs.atlas_nifti = atlas_nifti
-    inputnode.inputs.in_tracts = in_tracts
+    inputnode.inputs.atlas_nifti = str(atlas_nifti).replace(" ", "")
+    inputnode.inputs.in_tracts = str(in_tracts).replace(" ", "")
     inputnode.inputs.scale = scale
     inputnode.inputs.stat_edge = stat_edge
-    inputnode.inputs.sift2_weights = sift2_weights
-    inputnode.inputs.out_data = out_data
-    inputnode.inputs.out_assignments = out_assignments
+    inputnode.inputs.sift2_weights = str(sift2_weights).replace(" ", "")
+    inputnode.inputs.out_data = str(out_data).replace(" ", "")
+    # inputnode.inputs.out_assignments = out_assignments
 
     connectome = pe.Node(
         mrt.BuildConnectome(nthreads=nthreads, args="-quiet"),
@@ -71,7 +71,7 @@ def init_connectome_wf(
                     ("atlas_nifti", "in_nodes"),
                     ("stat_edge", "stat_edge"),
                     ("out_data", "out_connectome"),
-                    ("out_assignments", "out_assignments"),
+                    # ("out_assignments", "out_assignments"),
                 ],
             ),
         ]

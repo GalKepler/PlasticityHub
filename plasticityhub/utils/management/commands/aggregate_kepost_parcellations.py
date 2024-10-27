@@ -151,7 +151,7 @@ def aggregate_tensor_results(procedures: QuerySet, destination: str, overwrite: 
         query_df = pd.DataFrame()
         for procedure in procedures:
             fname = procedure.get(query)
-            if not fname:
+            if not fname or not Path(fname).exists():
                 continue
             p_df = pd.read_pickle(fname)
             p_df = add_session_and_subject_details(p_df, procedure)

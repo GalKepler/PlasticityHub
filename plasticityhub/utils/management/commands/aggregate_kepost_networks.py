@@ -34,6 +34,7 @@ def collect_atlases(atlases: dict):
     atlases : dict
         The atlases to add to the queries.
     """
+    atlases = {key: atlases[key] for key in atlases if "schaefer" not in key}
     queries = []
     atlases_copy = []
     for atlas in atlases:
@@ -93,7 +94,9 @@ def collect_session_and_subject_details(procedure: Procedure):
     # subject details
     return {
         "subject_id": subject.subject_id,
-        "subject_code": subject.subject_code,
+        "subject_code": subject.subject_code.replace("_", "")
+        .replace(" ", "")
+        .replace("\t", ""),
         "sex": subject.sex,
         "height": subject.height,
         "weight": subject.weight,
@@ -190,9 +193,15 @@ def generate_connectomes(
     atlases_queries, atlases_copy = collect_atlases(AVAILABLE_ATLASES)
     for procedure in tqdm.tqdm(procedures, desc="Generating connectomes"):
         demo_dict = collect_session_and_subject_details(procedure)
-        subject = demo_dict.get("subject_code").replace("_", "")
+        subject = (
+            demo_dict.get("subject_code")
+            .replace("_", "")
+            .replace(" ", "")
+            .replace("\t", "")
+        )
         session = demo_dict.get("session_id")
-        wf = Workflow(name=f"connectome_wf_{subject}_{session}")
+        wf = Workflow(name=f"connectome_wf")
+        # wf.base_dir = Path(destination) / "workflows"
         for tracts_query in tracts_queries:
             reconstruction_algorithm = tracts_query.get("query").get("reconstruction")
             tract_sift2_weight = {
@@ -231,11 +240,11 @@ def generate_connectomes(
                         desc=desc,
                     )
                     out_data = query_destination / f"{out_fname}_connectome.csv"
-                    out_assignments = query_destination / f"{out_fname}_assignments.txt"
+                    # out_assignments = query_destination / f"{out_fname}_assignments.txt"
                     if not overwrite and all(
                         [
                             out_data.exists(),
-                            out_assignments.exists(),
+                            # out_assignments.exists(),
                             atlas_destination.exists(),
                             demo_destination.exists(),
                         ]
@@ -251,7 +260,7 @@ def generate_connectomes(
                         tck_weights=tck_weights,
                         sift2_weights=sift2_weights,
                         out_data=out_data,
-                        out_assignments=out_assignments,
+                        # out_assignments=out_assignments,
                         nthreads=nthreads,
                     )
                     wf.add_nodes([con_wf])

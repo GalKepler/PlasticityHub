@@ -39,7 +39,7 @@ def reformat_df(df: pd.DataFrame) -> pd.DataFrame:
     df["id"] = df["id"].astype(str).str.zfill(9)
 
     # Convert Sex to uppercase
-    df["gender"] = df["gender"].apply(lambda x: x[0].upper())
+    df["gender"] = df["gender"].apply(lambda x: x[0].upper() if x else "U")
 
     # Convert the protocol, study, and group to title case
     for col in ["protocol", "study", "group"]:
@@ -166,17 +166,16 @@ def google_authenticate(
     gauth = GoogleAuth()
     gauth.settings["client_config_file"] = credentials
     # Check whether the credentials are expired
-    gauth.LoadCredentialsFile(authorized_user)
     if gauth.credentials is None or gauth.access_token_expired or force_new:
         print("Google credentials are expired or not found.")  # noqa: T201
         print("Authenticating with Google...")  # noqa: T201
         # Authenticate if credentials are not there
-        gauth.LocalWebserverAuth()
-    elif gauth.access_token_expired:
-        # Refresh them if expired
-        gauth.Refresh()
+        # gauth.LocalWebserverAuth()
+        gauth.CommandLineAuth()
+        gauth.SaveCredentialsFile(authorized_user)
     else:
         # Initialize the saved credentials
+        gauth.LoadCredentialsFile(authorized_user)
         gauth.Authorize()
     # Save the current credentials to a file for future use
     gauth.SaveCredentialsFile(authorized_user)
