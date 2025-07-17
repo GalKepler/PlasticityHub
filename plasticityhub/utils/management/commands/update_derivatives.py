@@ -66,15 +66,19 @@ def output_to_csv_with_derivatives(
             .replace("\t", "")
             .replace("-", "")
         )
-        # addition = "/" + f"ses-{session_id}"
         bids = bids_path / f"sub-{subject_addition}" / f"ses-{session_id}"
         if bids.exists():
             df.loc[i, "bids"] = bids
         for sub_dir in ["keprep", "kepost", "freesurfer", "CAT12.9_2577"]:
             if sub_dir != "freesurfer":
-                dest = derivatives_path / sub_dir / addition
+                dest = (
+                    derivatives_path
+                    / sub_dir
+                    / f"sub-{subject_addition}"
+                    / f"ses-{session_id}"
+                )
             else:
-                dest = derivatives_path / sub_dir / addition.split("/")[0]
+                dest = derivatives_path / sub_dir / f"sub-{subject_addition}"
             if dest.exists():
                 df.loc[i, sub_dir] = dest
 
