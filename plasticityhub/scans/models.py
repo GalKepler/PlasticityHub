@@ -106,6 +106,11 @@ class Session(models.Model):
         blank=True,
         null=True,
     )
+    rawdata_path = models.FilePathField(
+        blank=True,
+        help_text="Path to the raw data associated with this session",
+        max_length=300,
+    )
 
     class Meta:
         verbose_name = "Session"

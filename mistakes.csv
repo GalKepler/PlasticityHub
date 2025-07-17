@@ -1,0 +1,370 @@
+,scanid,status,lab,name,id,cellular no.,email,gender,dob,scandate,age@scan,weight,height,protocol,study,group,,scantag,qcode,,noscan/subject,scanday-qday,mistake
+0,20250211_1230,Performed,YBH,Dafna  Dillon,029444700,,,F,1972-04-09,02/11/2025,52.84,57.5,171.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+1,20250210_1714,Performed,SNBB,Shavit  Ben Tzvi,212487243,,,F,2001-12-13,02/10/2025,23.16,60,164.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+9,20250205_1854,Performed,SNBB,Uri  Eichelmann,321635401,,,M,1982-06-19,02/05/2025,42.63,75,180.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+15,20250205_0853,Performed,SNBB,Daniela  Lavon,208612499,,,F,1997-03-16,02/05/2025,27.89,59,169.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+18,20250204_1302,Performed,YBH,Limor  Osmo Pineles,049837719,,,M,1981-11-13,02/04/2025,43.23,86,162.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+27,20250202_1240,Performed,YBH,Dror  Casaretto,327321105,,,M,1981-02-09,02/02/2025,43.98,89,180.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+33,20250131_1009,Performed,SNBB,Shai  Nechmad,322719451,,,M,2000-07-27,01/31/2025,24.51,87.35,190.1,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+42,20250129_1236,Performed,YBH,Ofer  Boker,211575543,,,M,2000-11-27,01/29/2025,24.17,75,180.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+43,20250129_0918,Performed,YA,Hagai Medan,057758443,542525343,medanh@hbb.co.il,M,,01/29/2025,,,,Aging,Aging,None,,,AGN_19,,2,45686,missing demographic(s)
+46,20250128_1413,Performed,YBH,Yevgeniya  Vorobiyov,305974834,,,F,1982-12-08,01/28/2025,42.14,43,160.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+59,20250123_1537,Performed,YBH,Avior  Amrani,037677846,,,M,1975-11-28,01/23/2025,49.15,97,172.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+61,20250123_1154,Performed,YBH,Aharon  Hillel,332372937,,,M,2000-01-20,01/23/2025,25.01,64,169.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+63,20250123_0934,Performed,SNBB,Valeriya  Strakovich,328800081,,,F,2002-12-01,01/23/2025,22.14,55,159.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+66,20250122_1104,Performed,SNBB,Itamar  Babay,305594228,,,M,1990-09-16,01/22/2025,34.35,85,171.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+67,20250121_1902,Performed,SNBB,Daniel  Buzkov,323237172,,,M,2000-04-04,01/21/2025,24.8,95,179.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+68,20250121_1420,Performed,SNBB,Hili  Shapiro Yehezkel,313294746,,,F,1995-03-17,01/21/2025,29.84,65,170.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+69,20250121_1143,Performed,YBH,Tal  Miller,060134459,,,M,1982-02-26,01/21/2025,42.9,114,166.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+75,20250119_1955,Performed,SNBB,Amitay  Weiss,039988480,,,M,1983-09-01,01/19/2025,41.38,76,173.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+76,20250119_1852,Performed,SNBB,Tamar  Frommer Harpaz,011124567,,,F,1980-05-22,01/19/2025,44.66,67,168.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+79,20250116_1842,Performed,SNBB,Adi  Gazit,315009555,,,M,1996-06-16,01/16/2025,28.58,71,176.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+81,20250116_1309,Performed,SNBB,Lihi  Eilam,213059942,,,F,2003-03-06,01/16/2025,21.86,60,160.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+82,20250116_1146,Performed,YBH,Lia  Gutstein,324103746,,,F,2002-04-07,01/16/2025,22.77,60,167.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+83,20250115_1752,Performed,SNBB,Liad  Peretz,211587027,,,M,2000-07-22,01/15/2025,24.48,88,179.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+87,20250114_1958,Performed,YBH,Harry  Zalessky,322521386,,,M,2000-11-16,01/14/2025,24.16,78,174.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+89,20250114_1620,Performed,YBH,Aviv  Dor,206649980,,,M,1999-04-02,01/14/2025,25.78,76,177.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+91,20250114_1307,Performed,YBH,Rivka  Kauffman,300854924,,,F,1987-08-26,01/14/2025,37.39,70,168.0,Brain Bank,Ybh,,,,0000,,2,,missing qcode
+92,20250114_1050,Performed,SNBB,Noa  Heller,318969286,,,F,1998-03-22,01/14/2025,26.81,54.9,159.4,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+94,20250113_1444,Performed,SNBB,Odeya  Steinheart,325924736,,,F,2004-05-13,01/13/2025,20.67,65,154.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+95,20250113_1112,Performed,YBH,Omer  Mansour,305130577,,,M,1991-05-07,01/13/2025,33.68,108,181.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+102,20250109_1709,Performed,YBH,Israel Shlomo  Alon,318757119,,,M,1998-07-17,01/09/2025,26.48,85,180.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+105,20250109_1254,Performed,SNBB,Amit  Garfinkle,213260862,,,F,2004-01-12,01/09/2025,20.99,55.12,159.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+106,20250108_1644,Performed,SNBB,Guy  Shtotland,318888096,,,M,1999-02-18,01/08/2025,25.89,68,173.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+107,20250108_1212,Performed,YBH,Lotem  Shaliv,322527771,,,M,2000-06-10,01/08/2025,24.58,82,174.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+109,20250108_0926,Performed,SNBB,Sara  Yanetz,305624348,,,F,1991-06-27,01/08/2025,33.53,98,176.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+111,20250107_1402,Performed,YBH,Yair  Shimshon,207884693,,,M,2000-01-25,01/07/2025,24.95,88,169.79999999999998,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+112,20250107_1122,Performed,SNBB,Eli  Goldlist,022281711,,,M,1966-01-26,01/07/2025,58.95,71.05,166.1,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+113,20250107_1022,Performed,SNBB,Maya  Goldlist,324182534,,,F,2001-08-27,01/07/2025,23.36,41.6,149.5,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+114,20250106_1930,Performed,YBH,Aharon  Layosh,203641543,,,M,1992-03-20,01/06/2025,32.8,64,164.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+117,20250106_1354,Performed,YBH,Yuval  Chacham,322693581,,,M,2000-07-03,01/06/2025,24.51,79,171.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+118,20250105_1845,Performed,SNBB,Shay  Chemny,207063892,,,M,1998-08-05,01/05/2025,26.42,85,178.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+119,20250105_1702,Performed,SNBB,Elad  Raveh,322291758,,,M,2000-03-18,01/05/2025,24.8,77,176.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+121,20250105_1456,Performed,YBH,Ziv  Garami,206971608,,,M,2000-03-01,01/05/2025,24.84,85,194.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+122,20250105_1348,Performed,SNBB,Stella  Gomez Del Valle,215041922,,,M,2005-01-15,01/05/2025,19.97,53.15,156.20000000000002,Brain Bank,Snbb,,,,0000,,3,,missing qcode
+123,20250105_1108,Performed,SNBB,Yuval  Lifshitz,207639543,,,M,2000-05-28,01/05/2025,24.61,89,174.5,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+126,20250102_1939,Performed,SNBB,Michal  Katz,308153212,,,F,1992-08-23,01/02/2025,32.36,44,152.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+127,20250102_1657,Performed,SNBB,Noam  Nov,038107553,,,F,1986-03-30,01/02/2025,38.76,111,166.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+128,20250102_1516,Performed,SNBB,Noa  Govrin,323131342,,,F,2000-10-27,01/02/2025,24.18,46,159.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+130,20250102_1107,Performed,SNBB,Ran  Arnon,318704780,,,M,1998-03-17,01/02/2025,26.79,63.4,158.6,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+131,20250102_0913,Performed,SNBB,Malka  Feldman,032735730,,,F,1986-07-09,01/02/2025,38.48,51.1,165.5,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+132,20250101_1853,Performed,SNBB,Nikki Ruth  Piran,208538645,,,F,1996-09-04,01/01/2025,28.33,46,157.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+134,20250101_1312,Performed,SNBB,Dalia  Goldwirth Piran,055652606,,,F,1959-05-04,01/01/2025,65.66,53.3,159.60000000000002,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+136,20241231_1328,Performed,YBH,Nevo  Bar,322381021,,,M,2000-11-24,12/31/2024,24.1,92.5,170.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+137,20241231_1104,Performed,SNBB,Naama Michal  Barak,313362345,,,F,1995-08-24,12/31/2024,29.35,49.4,151.89999999999998,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+138,20241231_0019,Performed,YA,Shay Kempler,201507530,547677338,Shaykmp@gmail.com ,M,,12/31/2024,,,,Plasticity,Chess,Learning,,pre,CHS_L_22,,2,45657,missing demographic(s)
+139,20241230_1956,Performed,SNBB,Assaf  Segev,205761869,,,M,1994-08-01,12/30/2024,30.41,73.9,175.1,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+140,20241230_1859,Performed,SNBB,Alexandr  Rabinovich,304590649,,,M,1988-08-19,12/30/2024,36.36,75,178.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+141,20241230_1757,Performed,YBH,Eden  Litig,315158824,,,M,1999-01-21,12/30/2024,25.94,74,185.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+142,20241230_1236,Performed,SNBB,Arkadi  Soltonovich,303906069,,,M,1987-02-22,12/30/2024,37.86,100,184.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+143,20241230_1002,Performed,SNBB,Keren  Paldi,208834267,,,F,1997-06-08,12/30/2024,27.56,59,162.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+145,20241229_1918,Performed,SNBB,Noa  Vizman,209127851,,,F,1998-10-25,12/29/2024,26.18,40.6,151.1,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+146,20241229_1404,Performed,SNBB,Liri  Shirav Shwartz,322278094,,,F,2000-04-24,12/29/2024,24.68,86,157.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+147,20241229_1032,Performed,YBH,Ari Natan  Raveh,204904023,,,M,1996-11-26,12/29/2024,28.09,120,180.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+150,20241226_1524,Performed,SNBB,Shira  Halevy,212615348,,,F,2002-04-14,12/26/2024,22.7,79.3,168.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+151,20241226_1347,Performed,SNBB,Omri  Hacohen,200483519,,,M,1988-11-24,12/26/2024,36.09,87.5,178.5,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+152,20241225_1911,Performed,SNBB,Mickey Dan  Rubin,304820814,,,M,1990-06-12,12/25/2024,34.54,79.9,178.4,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+153,20241225_1055,Performed,YBH,Elhay  Hadad,208668673,,,M,1998-05-22,12/25/2024,26.59,85.8,175.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+160,20241222_1248,Performed,SNBB,Shmulik  Cohen,322646878,,,M,2000-09-01,12/22/2024,24.31,65,175.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+161,20241222_1017,Performed,YA,Gal Ben-Ami,209422252,503366311,gal199922@gmail.com,M,,12/22/2024,,,,Sport,Bjj,Learning,,pre,BJJ_L_119,,2,45648,missing demographic(s)
+164,20241219_1101,Performed,SNBB,Lans  Gaya,212268759,,,F,2001-06-28,12/19/2024,23.47,55.4,166.79999999999998,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+166,20241218_1837,Performed,YBH,Yaakov  Aknin,208250894,,,M,1996-03-20,12/18/2024,28.74,67.65,180.5,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+169,20241218_1205,Performed,SNBB,Sivan  Haviv,329796791,,,F,2000-02-09,12/18/2024,24.86,82.4,164.9,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+173,20241217_1729,Performed,SNBB,Tomer  Shneider,207422684,,,M,1999-02-08,12/17/2024,25.86,74,184.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+177,20241216_1550,Performed,SNBB,Shahar  Shemesh,322595034,,,F,2001-09-25,12/16/2024,23.22,64.85,170.9,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+179,20241216_1006,Performed,SNBB,Erez  Rachel Tena,051237451,,,F,1952-03-27,12/16/2024,72.72,76.05,171.5,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+181,20241215_1449,Performed,SNBB,Uriya  Venezian,308013614,,,M,1993-08-01,12/15/2024,31.37,90,180.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+183,20241215_1217,Performed,SNBB,Yuval  Moscovici,212851794,,,M,2002-05-21,12/15/2024,22.57,50.2,160.5,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+185,20241212_1541,Performed,YBH,Yoav  Penchas,322818436,,,M,2000-10-09,12/12/2024,24.17,76,182.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+186,20241212_1142,Performed,YBH,Gavriel  Schwartz,209179969,,,M,1999-07-11,12/12/2024,25.42,66,175.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+187,20241212_0948,Performed,SNBB,Yaniv  Biton,035780972,,,M,1978-07-01,12/12/2024,46.45,66,167.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+191,20241210_1953,Performed,YBH,Roi  Horowitz,322314634,,,M,2000-12-26,12/10/2024,23.95,76,175.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+193,20241209_1937,Performed,YBH,Yaron  Duart,036583482,,,M,1985-03-18,12/09/2024,39.72,116.05,193.79999999999998,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+194,20241209_1832,Performed,YBH,Amihay  Cohen,037280286,,,M,1979-10-31,12/09/2024,45.11,84.1,183.6,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+198,20241208_1921,Performed,YBH,Morad  Mansour,208635680,,,M,2000-09-18,12/08/2024,24.22,82,184.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+199,20241208_1448,Performed,YBH,Tomer  Gega,211702428,,,M,2000-08-12,12/08/2024,24.32,85,185.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+204,20241206_1113,Performed,YBH,Uriel  Grausz,206379885,,,M,1999-05-18,12/06/2024,25.55,112.6,177.5,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+205,20241205_1859,Performed,YBH,Yarin  Rahimi,318955283,,,M,2000-02-05,12/05/2024,24.83,71,164.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+206,20241205_1747,Performed,YBH,Itay  Midany,322620832,,,M,2000-09-08,12/05/2024,24.24,72,171.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+208,20241204_1815,Performed,SNBB,Dalia  Wexler Militscher,059091280,,,F,1965-01-28,12/04/2024,59.85,61.8,162.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+213,20241203_1809,Performed,SNBB,Tuvia Shalom  Radashkevich,222932410,,,M,2015-02-07,12/03/2024,9.82,25,128.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+214,20241203_1340,Performed,SNBB,Amitai Boaz  Barak,220551402,,,M,2013-11-14,12/03/2024,11.05,31,136.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+215,20241203_1224,Performed,SNBB,Roei  Greenberg,224878538,,,M,2015-09-09,12/03/2024,9.23,27,135.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+218,20241202_1514,Performed,SNBB,May Emma  Nachum,032272030,,,F,2000-05-24,12/02/2024,24.52,59.4,170.79999999999998,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+223,20241201_1753,Performed,YBH,Namer  Yizhak,027231190,,,M,1974-07-05,12/01/2024,50.4,70,173.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+224,20241201_1655,Performed,YBH,Simcha  Lubling,321113367,,,M,1998-12-16,12/01/2024,25.96,76,182.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+225,20241201_1543,Performed,YBH,Guy  Elmaliach,211724976,,,M,2000-04-02,12/01/2024,24.66,66,169.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+229,20241129_0943,Performed,YBH,Shai  Zaedman,203337001,,,M,1991-10-09,11/29/2024,33.14,100.2,181.29999999999998,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+230,20241128_1807,Performed,YBH,Rom  Assoulin,322294828,,,M,2000-03-24,11/28/2024,24.68,65,163.6,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+233,20241128_1458,Performed,YBH,Ehud  Dahbash,034136879,,,M,1977-07-15,11/28/2024,47.37,109.65,177.29999999999998,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+234,20241128_1357,Performed,YBH,Roy  Ben Yehuda,211907084,,,M,2000-04-25,11/28/2024,24.59,75,174.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+236,20241128_1039,Performed,SNBB,Orit  Ben Dror,053887469,,,F,1955-12-13,11/28/2024,68.96,88,164.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+238,20241127_1134,Performed,YBH,Roee  Politi,208290544,,,M,1999-08-05,11/27/2024,25.31,89,179.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+239,20241127_0948,Performed,YBH,Joshua Shlomo  Leibler,208087031,,,M,1998-11-25,11/27/2024,26.01,75,170.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+242,20241126_1702,Performed,SNBB,Matan  Baadani,209160811,,,M,1998-12-08,11/26/2024,25.97,66,161.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+243,20241126_1538,Performed,SNBB,Tomer  Colodner,206897860,,,M,1996-01-12,11/26/2024,28.87,64,179.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+245,20241126_1315,Performed,SNBB,Miryam  Balas,057262636,,,F,1961-10-30,11/26/2024,63.07,81,165.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+249,20241125_1008,Performed,SNBB,Nevenzal  Hadas Tamar,301219283,,,F,1987-10-06,11/25/2024,37.14,90.25,160.4,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+255,20241124_1305,Performed,,,000000000,585333252,reut.blass@gmail.com,F,,11/24/2024,,,,Sport,Bjj,Learning,,pre,BJJ_L_104,,0,45620,missing ID
+267,20241119_1848,Performed,YBH,Assaf  Buskila,322435173,,,M,2000-11-03,11/19/2024,24.04,77,176.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+268,20241119_1721,Performed,YBH,Roei  Eldar,209189711,,,M,2000-01-21,11/19/2024,24.83,74.5,163.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+274,20241118_1723,Performed,YBH,Shachar  Eyal,206538274,,,M,2000-02-17,11/18/2024,24.75,90.4,179.29999999999998,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+275,20241118_1608,Performed,SNBB,Eli  Sluzki,303411839,,,M,1984-06-09,11/18/2024,40.44,70,172.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+276,20241118_1404,Performed,IT,Nadim  Kadan,213735095,,,M,2003-06-15,11/18/2024,21.42,58.4,174.70000000000002,Brain Bank,It,,,,0000,,1,,missing qcode
+279,20241117_1904,Performed,YBH,Asaf  Haklay,206873002,,,M,2000-02-19,11/17/2024,24.75,78.1,178.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+283,20241117_1148,Performed,SNBB,Or  Butbul,203994074,,,M,1991-09-20,11/17/2024,33.16,84.1,179.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+287,20241115_1143,Performed,SNBB,Daniel  Abutbul,323882225,532211430,daniel225500660011@gmail.com,M,2001-06-25,11/15/2024,23.39,73,176.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+288,20241115_0954,Performed,SNBB,Tali  Mano,058868969,506947571,talima@raanana.muni.il,F,1964-07-16,11/15/2024,60.33,65.3,167.4,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+289,20241114_2009,Performed,SNBB,Tal  Goldman,200631976,525118426,talgoldman6@gmail.com,M,1988-09-01,11/14/2024,36.2,93,178.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+290,20241114_1329,Performed,YBH,Dvir  Danan,318929759,,,M,1998-11-15,11/14/2024,26,71,172.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+292,20241112_1739,Performed,IT,Belle  Shevach,212228241,,,F,2002-04-13,11/12/2024,22.58,99,160.0,Brain Bank,It,,,,0000,,1,,missing qcode
+297,20241111_1807,Performed,YBH,Omer  Cohen,211426382,,,M,2000-07-10,11/11/2024,24.34,63.9,174.8,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+300,20241111_1200,Performed,SNBB,Yair  Genges,213785157,,,M,2003-01-09,11/11/2024,21.84,72,183.0,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+301,20241111_0851,Performed,,,000000000,509004327,Amitaygoldman@gmail.com,M,,11/11/2024,,,,Pingpong,Pingpong,Learning,,,PNG_L_04,,0,,missing ID
+304,20241110_1244,Performed,YBH,Guy  Tabah,318899143,,,M,1999-12-02,11/10/2024,24.94,70,172.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+306,20241108_1056,Performed,IT,Gil  Meyer,213638570,,,M,2003-05-01,11/08/2024,21.52,63.05,173.3,Brain Bank,It,,,,0000,,1,,missing qcode
+309,20241107_1400,Performed,YA,Noam Rick,000000000,542608186,Noam.rick@gmail.com,M,,11/07/2024,,,,Sport,Bjj,Learning,,pre,BJJ_L_99,,0,45603,missing ID
+310,20241107_0913,Performed,TS,Eden  Ouzan,209043280,,,F,1997-01-27,11/07/2024,27.78,76,181.0,Brain Bank,Ts,,,,0000,,1,,missing qcode
+311,20241106_1445,Performed,IT,Yael  Parzelina,324207885,,,F,2001-10-16,11/06/2024,23.06,53,156.0,Brain Bank,It,,,,0000,,1,,missing qcode
+316,20241104_1513,Performed,IT,Yael  Caspi,213635204,,,F,2003-04-16,11/04/2024,21.55,51,162.0,Brain Bank,It,,,,0000,,1,,missing qcode
+318,20241104_1306,Performed,SNBB,  Cohen Zedek,215456484,,,F,2005-04-15,11/04/2024,19.55,56,166.0,Brain Bank,Snbb,,,,0000,,2,,missing qcode
+323,20241103_1340,Performed,TS,Oren  Marom,209234277,505993794,orenmarom3@gmail.com,M,1998-12-22,11/03/2024,25.87,87,182.0,Brain Bank,Ts,,,,0000,,1,,missing qcode
+326,20241031_1128,Performed,IT,Bar  Waidergoren Svion,324174432,,,F,2001-10-05,10/31/2024,23.07,62,164.0,Brain Bank,It,,,,0000,,1,,missing qcode
+329,20241030_1913,Performed,YBH,Dvir  Avnaim,208329987,,,M,1999-04-30,10/30/2024,25.5,58,171.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+337,20241029_1243,Performed,SNBB,Malal  Smuel,029502119,,,M,1972-06-23,10/29/2024,52.35,85,174.0,Brain Bank,Snbb,,,,0000,,2,,missing qcode
+338,20241029_1143,Performed,YBH,Reuven Shabtay  Shepsel,207016841,,,M,1998-09-29,10/29/2024,26.08,74,177.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+346,20241028_0917,Performed,IT,Or  Herman,212213664,,,F,2001-01-08,10/28/2024,23.8,62.55,162.7,Brain Bank,It,,,,0000,,1,,missing qcode
+349,20241027_1416,Performed,IT,Ligal  Kaner,206353344,,,F,1999-09-26,10/27/2024,25.09,52,151.0,Brain Bank,It,,,,0000,,1,,missing qcode
+350,20241027_1242,Performed,IT,Michal  Keren,211783113,,,F,2001-01-24,10/27/2024,23.76,59,175.0,Brain Bank,It,,,,0000,,1,,missing qcode
+352,20241023_1211,Performed,IT,Elad  Shenar,322793712,,,M,2001-07-23,10/23/2024,23.25,115,181.0,Brain Bank,It,,,,0000,,1,,missing qcode
+354,20241022_1706,Performed,IT,Rotem  Efrati,314808056,,,F,1999-06-07,10/22/2024,25.37,70.55,164.3,Brain Bank,It,,,,0000,,1,,missing qcode
+355,20241022_1458,Performed,IT,Tali  Samuel,209929322,,,F,2002-06-12,10/22/2024,22.36,50.5,164.5,Brain Bank,It,,,,0000,,1,,missing qcode
+356,20241022_1310,Performed,IT,Gazal  Diab,212812705,,,F,2003-05-17,10/22/2024,21.43,66.8,168.5,Brain Bank,It,,,,0000,,1,,missing qcode
+361,20241021_1848,Performed,SNBB,Eden  Elimelech,204917850,525932322,Eden.elimelech@gmail.com,F,1995-04-13,10/21/2024,29.52,87.6,167.4,Brain Bank,Snbb,,,,0000,,1,,missing qcode
+363,20241021_1535,Performed,IT,Ofer  Eran,318825056,,,F,1999-01-05,10/21/2024,25.79,53.6,155.4,Brain Bank,It,,,,0000,,2,,missing qcode
+368,20241020_1651,Performed,YA,Yaniv Eden,000000000,534243380,yanive1970@gmail.com,M,,10/20/2024,,,,Plasticity,Music,Professional,,,1278,,0,,missing ID
+373,20241015_1651,Performed,IT,Neta  Nevo,323099499,,,F,2002-01-09,10/15/2024,22.77,68,168.0,Brain Bank,It,,,,0000,,1,,missing qcode
+382,20241014_1549,Performed,YBH,Rivka  Kauffman,300854924,,,F,1987-08-26,10/14/2024,37.13,72,168.0,Brain Bank,Ybh,,,,0000,,2,,missing qcode
+397,20241010_1408,Performed,YBH,Sandra  Nitzan,022942437,,,F,1967-03-24,10/10/2024,57.54,90,160.0,Brain Bank,Ybh,,,,0000,,1,,missing qcode
+405,20241009_1425,Performed,IT,Izkovich  Gil,209825454,,,F,2001-09-09,10/09/2024,23.08,56,150.0,Brain Bank,It,,,,0000,,2,,missing qcode
+410,20241008_1719,Performed,IT,Alon Yosef  Wertheimer,324052240,,,M,2001-08-17,10/08/2024,23.14,76.15,178.4,Brain Bank,It,,,,0000,,1,,missing qcode
+413,20241008_1255,Performed,IT,Alon  Ilutowich,212726608,,,M,2002-08-22,10/08/2024,22.13,67.45,179.20000000000002,Brain Bank,It,,,,0000,,1,,missing qcode
+414,20241008_1110,Performed,IT,Dana  Erez,212087779,,,F,2001-04-10,10/08/2024,23.49,54,171.0,Brain Bank,It,,,,0000,,1,,missing qcode
+421,20241007_1252,Performed,IT,Danny  Leon,212459622,,,F,2001-11-26,10/07/2024,22.86,100,158.0,Brain Bank,It,,,,0000,,1,,missing qcode
+425,20241006_1539,Performed,IT,Nadav  Gerzon,212187421,,,M,2001-01-01,10/06/2024,23.76,69,171.0,Brain Bank,It,,,,0000,,1,,missing qcode
+427,20241006_0957,Performed,IT,Tamar  Kalai,212047732,,,F,2001-05-04,10/06/2024,23.42,52,167.0,Brain Bank,It,,,,0000,,1,,missing qcode
+430,20241001_1536,Performed,IT,Lucas  Shushol,207554346,,,M,1999-10-26,10/01/2024,24.93,79.75,181.29999999999998,Brain Bank,It,,,,0000,,2,,missing qcode
+431,20241001_1352,Performed,IT,Rita  Berezovsky,325045623,,,F,2002-05-24,10/01/2024,22.35,69,179.1,Brain Bank,It,,,,0000,,1,,missing qcode
+432,20241001_1216,Performed,IT,Daniel  Entelis,206629388,,,M,1999-07-20,10/01/2024,25.2,72.25,177.8,Brain Bank,It,,,,0000,,2,,missing qcode
+436,20240930_1708,Performed,IT,Ori  Shaham,325197648,,,M,2002-07-08,09/30/2024,22.23,72.5,177.0,Brain Bank,It,,,,0000,,1,,missing qcode
+444,20240929_1435,Performed,IT,Edan  Pinsly,209541895,,,M,1998-01-12,09/29/2024,26.71,85,188.0,Brain Bank,It,,,,0000,,2,,missing qcode
+446,20240929_1139,Performed,IT,Daniel  Shimelmits,323099911,,,M,2002-01-13,09/29/2024,22.71,66,170.0,Brain Bank,It,,,,0000,,1,,missing qcode
+447,20240929_1014,Performed,IT,Roy  Zigdon,314938317,,,M,1999-12-13,09/29/2024,24.79,76,184.0,Brain Bank,It,,,,0000,,2,,missing qcode
+456,20240925_1055,Performed,IT,Meitar  Peretz,207671892,,,F,2000-01-30,09/25/2024,24.65,60,165.0,Brain Bank,It,,,,0000,,1,,missing qcode
+460,20240924_1320,Performed,IT,Yahli  Amit,211331517,,,F,2002-01-13,09/24/2024,22.7,86,164.0,Brain Bank,It,,,,0000,,1,,missing qcode
+464,20240923_1705,Performed,IT,Mikhail  Sheynin,336119862,,,M,2001-03-19,09/23/2024,23.51,69,174.0,Brain Bank,It,,,,0000,,1,,missing qcode
+465,20240923_1518,Performed,IT,Mihal Nikol  Kuznetsov,206469694,,,F,1999-01-30,09/23/2024,25.65,56.6,167.70000000000002,Brain Bank,It,,,,0000,,1,,missing qcode
+496,20240915_1602,Performed,YBH,Tiran Keha,208322925,,tirankeha107@gmail.com,U,,09/15/2024,,,,The Base,Army,,,,BB00999,,1,6,missing demographic(s)
+671,20240714_1309,Performed,YA,Gal Kepler,308418185,,,M,1993-03-19,07/14/2024,31.32,,,The Base,Brainbank,,,,0000,None,7,,missing qcode
+1271,20231002_1448,Performed,IT,Edan Pinsly,209541895,,,M,1998-01-12,10/02/2023,25.72,80,188.0,Tavor,Tavor,,,,0000,,2,,missing qcode
+1281,20230928_1039,Performed,IT,Michal Medina,315854869,,,F,2000-03-13,09/28/2023,23.54,44,163.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+1284,20230926_1316,Performed,IT,Danielle Yosifon,211464235,,,F,2000-06-21,09/26/2023,23.26,88,168.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+1286,20230921_1249,Performed,IT,Maayan Ulman,322592072,,,F,2000-08-06,09/21/2023,23.12,62,173.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+1288,20230920_1307,Performed,IT,Almog Shaanan,318225810,,,M,1997-09-18,09/20/2023,26.01,80,179.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+1289,20230919_1834,Performed,IT,Noga Wachman,212363766,,,F,2001-12-09,09/19/2023,21.78,52,155.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+1290,20230919_1702,Performed,IT,Ofer Eran,318825056,,,F,1999-01-05,09/19/2023,24.7,52,157.0,Tavor,Tavor,,,,0000,,2,,missing qcode
+1291,20230919_1441,Performed,IT,Emma Dok,207961871,,,F,1999-03-28,09/19/2023,24.48,60,167.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+1314,20230911_1000,Performed,IT,Roy Zigdon,314938317,,,M,1999-12-13,09/11/2023,23.75,73,186.0,Tavor,Tavor,,,,0000,,2,,missing qcode
+1316,20230910_1639,Performed,IT,Ofir Fridman,209395102,,,M,1998-12-31,09/10/2023,24.69,70,176.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+1323,20230907_1418,Performed,IT,Bashar Watad,325044063,,,M,2002-08-27,09/07/2023,21.03,75,189.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+1324,20230907_1048,Performed,IT,Yehonatan Wechsler,212202022,,,M,2001-02-22,09/07/2023,22.54,95,172.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+1325,20230906_1717,Performed,IT,Daniel Entelis,206629388,,,M,1999-07-20,09/06/2023,24.13,73,177.0,Tavor,Tavor,,,,0000,,2,,missing qcode
+1326,20230906_1547,Performed,IT,Shushol Lucas,207554346,,,M,1999-10-26,09/06/2023,23.86,80,183.0,Tavor,Tavor,,,,0000,,2,,missing qcode
+1329,20230903_1425,Performed,IT,Gil Izkovich,209825454,,,F,2001-09-09,09/03/2023,21.99,56,150.0,Tavor,Tavor,,,,0000,,2,,missing qcode
+1530,20230524_1053,Performed,IT,Avigail Silberstein,209008606,,,F,1997-04-28,05/24/2023,26.07,,,Tavor,Tavor,,,,0000,,1,,missing qcode
+1957,20221204_0837,Performed,IT,Omer Ashuach,205531247,,,M,1995-01-02,12/04/2022,27.92,,,Tavor,Tavor,,,,0000,,1,,missing qcode
+2031,20221113_1828,Performed,IT,Dana Shaharabani,211883392,,,F,2000-12-20,11/13/2022,21.9,75,160.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2032,20221113_1652,Performed,IT,Jonathan Lautman,209660562,,,M,2000-10-16,11/13/2022,22.08,74,180.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2042,20221110_0840,Performed,IT,Neta Dagan,207880667,,,F,2000-01-10,11/10/2022,22.83,50,155.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2045,20221109_1501,Performed,IT,Yasmin Keren,213603962,,,F,2003-04-15,11/09/2022,19.57,50,162.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2046,20221109_1353,Performed,IT,Nadav Raisberg,209661537,,,M,2001-03-29,11/09/2022,21.61,68,178.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2047,20221109_1056,Performed,IT,Omer Goldstein,315340901,,,M,1996-08-13,11/09/2022,26.24,63,175.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2048,20221109_0921,Performed,IT,Yuval Ben Moshe,315110700,,,M,1999-04-06,11/09/2022,23.59,65,172.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2050,20221108_1524,Performed,IT,Lahav Davidzon,208336545,,,M,2000-05-05,11/08/2022,22.51,75,178.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2051,20221108_1223,Performed,IT,Rotem Tene,322449547,,,M,2001-03-30,11/08/2022,21.61,73,180.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2052,20221108_1048,Performed,IT,Guy Sagiv,302288840,,,M,1994-12-05,11/08/2022,27.92,70,179.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2053,20221108_0918,Performed,IT,Adar Shriki,325758043,,,F,2004-02-22,11/08/2022,18.71,55,170.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2064,20221106_0837,Performed,IT,Salma Kabaha,210022810,,,F,2002-10-03,11/06/2022,20.09,85,163.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2078,20221031_1401,Performed,IT,Naveh Ayal,209207638,,,M,1998-06-10,10/31/2022,24.39,80,178.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2079,20221031_1216,Performed,IT,Halel Adorian,322534918,,,F,2001-04-08,10/31/2022,21.56,59,165.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2085,20221030_0839,Performed,IT,Arina Balashova,342503539,,,F,1999-03-16,10/30/2022,23.62,73,170.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2089,20221027_1657,Performed,IT,Annet Fusman,206360752,,,F,1999-04-16,10/27/2022,23.53,50,157.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2096,20221025_1557,Performed,IT,Shira Troyansky,319029211,,,F,1998-08-03,10/25/2022,24.23,51,163.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2101,20221024_1505,Performed,IT,Hadar Menashe,319096764,,,F,1998-06-27,10/24/2022,24.32,58,167.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2109,20221020_1612,Performed,IT,Tomer Stern,207020421,,,M,1996-02-03,10/20/2022,26.71,70,170.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2110,20221020_1326,Performed,IT,Niv David,207915935,,,M,1999-04-10,10/20/2022,23.53,72,177.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2111,20221020_1154,Performed,IT,Maayan Kikus,316515741,,,F,1995-11-26,10/20/2022,26.9,76,167.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2113,20221019_1723,Performed,IT,Eden Modai,208668160,,,F,1998-05-18,10/19/2022,24.42,70,167.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2114,20221019_1537,Performed,IT,Shahar Rosenstock,319023685,,,F,1997-11-23,10/19/2022,24.9,80,164.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2118,20221016_1148,Performed,IT,Gai Shaked,207855842,,,M,1999-10-05,10/16/2022,23.03,75,176.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2119,20221016_1009,Performed,IT,Noga Gafny,212459184,,,F,2001-11-22,10/16/2022,20.9,58,152.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2125,20221011_1057,Performed,IT,Adi Peleg,318156452,,,F,1998-06-18,10/11/2022,24.31,51,166.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2128,20221006_1535,Performed,IT,Ofir Amar,316221548,,,F,1996-12-27,10/06/2022,25.77,54,172.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2129,20221006_1353,Performed,IT,Siven Weissman,207810581,,,F,1999-05-18,10/06/2022,23.38,53,158.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2130,20221006_1125,Performed,IT,Shaked Geffen,322691643,,,M,2000-06-26,10/06/2022,22.28,70,169.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2139,20220922_1723,Performed,IT,Noa Marom,206395881,,,F,1999-01-25,09/22/2022,23.66,61,178.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2140,20220922_1542,Performed,IT,Noam Shoavi,208221358,,,F,1998-07-22,09/22/2022,24.17,51,157.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2152,20220915_1438,Performed,IT,Tomer Peled,206667891,,,M,1999-07-24,09/15/2022,23.14,79,184.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2157,20220914_1611,Performed,IT,Gal Aizic,209082270,,,M,1997-11-02,09/14/2022,24.87,70,179.0,Tavor,Tavor,,,,0000,,2,,missing qcode
+2159,20220914_0949,Performed,IT,Hoshen Kapri,324928472,,,F,2002-08-23,09/14/2022,20.06,52,163.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2161,20220913_1602,Performed,IT,Hadar Cohen,208579391,,,F,1998-02-07,09/13/2022,24.6,60,158.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2163,20220913_0831,Performed,IT,Suf Chimovits,206573578,,,F,1999-04-24,09/13/2022,23.39,46,154.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2165,20220912_1848,Performed,IT,Michal Matzlavi,209320795,,,F,1998-07-20,09/12/2022,24.15,52,163.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2166,20220912_1703,Performed,IT,Shahar Naim,211391206,,,F,2000-05-18,09/12/2022,22.32,48,158.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2167,20220912_1527,Performed,IT,Shira Ben Haim,206510992,,,F,1998-08-27,09/12/2022,24.04,62,158.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2168,20220912_1341,Performed,IT,Mor Levy,315637041,,,F,1998-04-05,09/12/2022,24.44,53,164.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2169,20220912_1156,Performed,IT,Mary Arav,207368176,,,F,1999-07-08,09/12/2022,23.18,49,160.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2173,20220911_1621,Performed,IT,Inbal Gabay,213219157,,,F,2003-06-08,09/11/2022,19.26,55,165.0,Tavor,Tavor,,,,0000,,3,,missing qcode
+2174,20220911_1421,Performed,IT,Braah Krayem,324934264,,,F,2003-02-27,09/11/2022,19.54,65,167.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2175,20220911_0839,Performed,IT,Elena Kazlinskaya,336121843,,,F,1999-05-03,09/11/2022,23.36,52,180.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2195,20220907_1135,Performed,IT,David Magreli,209899319,,,M,2001-03-29,09/07/2022,21.44,77,192.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2196,20220907_0956,Performed,IT,Talia Heching,341114619,,,F,2001-06-23,09/07/2022,21.21,60,155.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2233,20220829_1505,Performed,IT,Noa Strauss,322272691,,,F,2000-04-13,08/29/2022,22.38,,,Tavor,Tavor,,,,0000,,1,,missing qcode
+2311,20220809_1844,Performed,IT,Noam Elimelech,315358556,,,M,1996-01-10,08/09/2022,26.58,,,Tavor,Tavor,,,,0000,,1,,missing qcode
+2459,20220612_1213,Performed,IT,Bar Peleg,207682428,,,F,1996-05-20,06/12/2022,26.06,60,163.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2474,20220607_0827,Performed,IT,Ofir Aharony,205919152,,,F,1995-07-10,06/07/2022,26.91,47,155.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2480,20220606_1237,Performed,IT,Noa Naki,208786442,,,F,1997-07-01,06/06/2022,24.93,60,153.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2481,20220606_0842,Performed,IT,Tomer Roditi,208119719,,,M,1996-08-11,06/06/2022,25.82,80,180.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2487,20220531_1438,Performed,IT,Dvir Ben Dov,315819227,,,M,1997-02-13,05/31/2022,25.3,76,181.0,Tavor,Tavor,,,,0000,,3,,missing qcode
+2494,20220530_1223,Performed,IT,Ron Vaknin,211560032,,,M,2000-09-27,05/30/2022,21.67,96,176.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2495,20220529_1843,Performed,IT,Ilan Peerutin,208723304,,,M,1997-08-10,05/29/2022,24.8,85,178.0,Tavor,Tavor,,,,0000,,3,,missing qcode
+2496,20220529_1734,Performed,IT,Yuval Alter,315424705,,,M,1996-05-10,05/29/2022,26.05,90,190.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2497,20220529_1542,Performed,YA,Amit Duvdevany,031817406,0,0,M,1974-11-07,05/29/2022,47.56,90,184.0,The Base,Brainbank,,,,0000,None,1,,missing qcode
+2499,20220529_1100,Performed,IT,Raz Elfer,302339585,,,M,1995-02-10,05/29/2022,27.3,80,183.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2504,20220525_1030,Performed,IT,Naama Shilo,318435427,,,F,1997-06-01,05/25/2022,24.98,56,168.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2505,20220524_1426,Performed,IT,Adi Ben Shimol,318467560,,,F,1997-11-13,05/24/2022,24.53,39,151.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2517,20220515_1407,Performed,IT,Dana Greenberg,206900797,,,F,1996-04-18,05/15/2022,26.07,62,170.0,Tavor,Tavor,,,,0000,,2,,missing qcode
+2518,20220515_1256,Performed,IT,Inbar Perets,315655795,,,F,1996-07-06,05/15/2022,25.86,60,162.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2541,20220414_1740,Performed,IT,Bar Raphael Lankri,208463810,,,M,1996-09-18,04/14/2022,25.57,86,175.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2542,20220412_1650,Performed,IT,Uddi Kimchy,206890709,,,M,1998-11-08,04/12/2022,23.43,70,176.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2543,20220412_1258,Performed,YG,Noam Gal,052085727,,,M,1953-09-26,04/12/2022,68.55,74,174.0,Gepner,Gepner,,,,0000,,1,,missing qcode
+2544,20220411_1721,Performed,IT,Adi Dagani,206019150,,,F,1996-02-05,04/11/2022,26.18,57,160.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2545,20220411_1609,Performed,IT,Naama Sara Binnes,208670109,,,F,1998-02-16,04/11/2022,24.15,58,161.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2546,20220411_1036,Performed,IT,Gal Winer,318167764,,,F,1997-08-20,04/11/2022,24.64,53,169.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2547,20220411_0929,Performed,IT,Chen Dinachi,209276286,,,F,1999-06-22,04/11/2022,22.8,50,167.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2548,20220411_0822,Performed,IT,Maayan Shelef,205508583,,,F,1994-05-02,04/11/2022,27.94,66,170.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2549,20220410_1816,Performed,IT,Tal Hayun,315359935,,,F,1996-01-26,04/10/2022,26.21,51,161.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2550,20220410_1558,Performed,IT,Inbar Gelts,207115346,,,F,1996-07-31,04/10/2022,25.69,67,163.0,Tavor,Tavor,,,,0000,,3,,missing qcode
+2551,20220410_1440,Performed,IT,Idan Saban,207501768,,,M,1998-06-17,04/10/2022,23.82,58,170.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2552,20220410_1222,Performed,IT,Eilon Shahan,318251071,,,M,1997-04-10,04/10/2022,25,65,169.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2553,20220410_1112,Performed,IT,Ayala Milo,204909832,,,F,1999-11-20,04/10/2022,22.39,65,160.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2554,20220410_1007,Performed,IT,Ophir Netzer,308184753,,,F,1992-09-04,04/10/2022,29.6,58,168.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2555,20220408_1437,Performed,IT,Gal Gumpel,308195833,,,M,1993-06-16,04/08/2022,28.81,70,173.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2556,20220408_1318,Performed,IT,Tom Mendelboim,301495743,,,M,1989-01-08,04/08/2022,33.25,85,168.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2557,20220408_1205,Performed,IT,Hila Wolffheim,200638880,,,F,1988-04-22,04/08/2022,33.96,85,163.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2558,20220408_1058,Performed,IT,Shelly Tahan,036616738,,,F,1989-12-11,04/08/2022,32.33,80,168.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2559,20220408_0833,Performed,IT,Chen Kordova,312456403,,,F,1994-03-17,04/08/2022,28.06,50,160.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2601,20220329_1456,Performed,YG,Yaffa Hoffman,055688501,,,F,1959-03-18,03/29/2022,63.03,76,152.0,Gepner,Gepner,,,,0000,,1,,missing qcode
+2602,20220329_1346,Performed,YG,Nava Eldad,057402869,,,F,1962-01-03,03/29/2022,60.24,66,162.0,Gepner,Gepner,,,,0000,,1,,missing qcode
+2603,20220329_1241,Performed,YG,Orly Avivi,055353452,,,F,1958-05-09,03/29/2022,63.89,89,165.0,Gepner,Gepner,,,,0000,,1,,missing qcode
+2604,20220329_1136,Performed,YG,Zeev Neeman,055556377,,,M,1958-10-03,03/29/2022,63.49,87,183.0,Gepner,Gepner,,,,0000,,1,,missing qcode
+2605,20220329_1037,Performed,YG,Talia Neeman,055474316,,,F,1958-09-18,03/29/2022,63.53,68,160.0,Gepner,Gepner,,,,0000,,1,,missing qcode
+2625,20220303_1718,Performed,IT,Shaked Aglamaz,318595758,,,F,1997-07-30,03/03/2022,24.59,54,171.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2626,20220228_0951,Performed,IT,Eden Simhi,315519991,,,F,1996-10-18,02/28/2022,25.36,77,155.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2657,20220210_1242,Performed,IT,Rinat Saban,208994574,,,F,1997-05-29,02/10/2022,24.7,62,165.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2661,20220207_1233,Performed,IT,Ilay Pinto,315829069,,,M,1996-01-11,02/07/2022,26.07,72,174.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2663,20220206_1022,Performed,IT,Adi Brown,302884622,,,F,1989-12-23,02/06/2022,32.12,,,Tavor,Tavor,,,,0000,,1,,missing qcode
+2700,20211227_1834,Performed,YA,Yuval Kessel Meilichson,208570317,,yuvalkm@gmail.com,F,1997-08-11,12/27/2021,24.38,49,165.0,The Base,Brainbank,,,,0000,None,1,,missing qcode
+2709,20211224_0909,Performed,IT,Shira Salama,316567171,,,F,1995-08-24,12/24/2021,26.33,53,164.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2728,20211130_1824,Performed,IT,Adi Vita,314881491,,,F,1996-07-15,11/30/2021,25.37,53,168.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2731,20211129_1456,Performed,IT,Shir Asulin,318875283,,,F,1999-07-31,11/29/2021,22.33,,,Tavor,Tavor,,,,0000,,2,,missing qcode
+2734,20211129_0951,Performed,IT,Nir Har Shemesh,201519006,,,M,1989-09-16,11/29/2021,32.2,67,171.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2766,20211031_1739,Performed,IT,Hagar Segev,207021544,,,F,1996-02-23,10/31/2021,25.69,55,167.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2767,20211031_1028,Performed,IT,Gal Eli Haim,318164704,,,M,1997-06-03,10/31/2021,24.41,83,173.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2772,20211027_1844,Performed,IT,Oded Khazon,208196337,,,M,1999-02-21,10/27/2021,22.68,59,181.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2773,20211026_1902,Performed,IT,Tehila Daboush,200494847,,,F,1998-10-01,10/26/2021,23.07,56,155.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2774,20211026_1618,Performed,IT,Yael Erez,316220128,,,F,1996-12-19,10/26/2021,24.85,55,165.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2775,20211026_1207,Performed,IT,Shiraz Vaknin,208314450,,,F,1999-08-12,10/26/2021,22.2,74,162.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2776,20211026_1101,Performed,IT,Sagi Beno,036546604,,,M,1985-01-30,10/26/2021,36.74,85,185.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2777,20211026_0949,Performed,IT,Shahar Zur,032732737,,,F,1986-07-23,10/26/2021,35.26,46,158.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2778,20211026_0837,Performed,IT,Asi Garbarz,300174505,,,M,1986-10-19,10/26/2021,35.02,58,167.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2780,20211025_1724,Performed,IT,Neta Mochiach,026501189,,,F,1986-05-24,10/25/2021,35.42,96,155.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2781,20211025_1607,Performed,IT,Lilach Weiss,208881862,,,F,1997-05-03,10/25/2021,24.48,60,164.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2783,20211025_1201,Performed,IT,Ida Rotter,310488937,,,F,1992-01-01,10/25/2021,29.82,52,164.0,Tavor,Tavor,,,,0000,,3,,missing qcode
+2784,20211024_1544,Performed,IT,Racabi Natali,302790951,,,F,1989-04-11,10/24/2021,32.54,67,165.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2785,20211024_1421,Performed,IT,Shlomit Maimon,203518568,,,F,1992-05-16,10/24/2021,29.44,50,157.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2786,20211024_0942,Performed,IT,Tamar Shavit,200115210,,,F,1992-06-03,10/24/2021,29.39,60,158.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2787,20211024_0831,Performed,IT,Nitzan Ben Hour,302967500,,,M,1990-01-22,10/24/2021,31.76,64,166.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2799,20211012_1208,Performed,YA,Sojoud Saquer,000000000,054-4729127,sujoud.saqer@gmail.com,F,1999-10-15,10/12/2021,21.99,48,156.0,Blind,Blind,,,,0515,None,0,5,missing ID
+2869,20210723_1335,Performed,IT,Roei Abulafya,207106840,,,M,1999-05-07,07/23/2021,22.21,56,173.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2874,20210722_1639,Performed,IT,Amir Belder,204179659,,,M,1992-09-21,07/22/2021,28.84,78,184.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2875,20210722_1528,Performed,IT,Aviv Volonski,203953799,,,M,1991-05-16,07/22/2021,30.18,70,174.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2877,20210722_1227,Performed,YA,Orly Gilad,025554502,052-2579876,0,F,1973-12-10,07/22/2021,47.62,47,155.0,Blind,Blind,,,,0000,None,1,,missing qcode
+2878,20210722_0954,Performed,IT,Adi Cohen,204286710,,,M,1993-06-27,07/22/2021,28.07,60,174.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2879,20210722_0830,Performed,IT,Oren Gozlan,307920538,,,M,1993-01-18,07/22/2021,28.51,85,185.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2880,20210721_1812,Performed,IT,May Poyastro,305651416,,,F,1992-05-09,07/21/2021,29.2,70,165.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2881,20210721_1658,Performed,IT,Lior Afik,316380021,,,F,1996-05-18,07/21/2021,25.17,57,172.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2883,20210721_1313,Performed,IT,Yoav Zacharia,209520527,,,M,1999-09-27,07/21/2021,21.82,62,169.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2884,20210721_0830,Performed,IT,Ido Cohen,203516992,,,M,1992-04-27,07/21/2021,29.23,70,181.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2885,20210720_1852,Performed,IT,Rotem Marinov,209396977,,,F,1999-01-06,07/20/2021,22.54,48,161.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2886,20210720_1424,Performed,IT,Amos Elgali,313281669,,,M,1995-03-22,07/20/2021,26.33,78,175.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2887,20210720_1313,Performed,IT,Gaya David,212528012,,,F,2001-12-31,07/20/2021,19.55,85,165.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2888,20210720_1158,Performed,IT,Mor Balas,208846584,,,F,1997-03-09,07/20/2021,24.36,49,155.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2889,20210720_0833,Performed,IT,Erez Levanon,302825708,,,M,1990-03-01,07/20/2021,31.39,70,180.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2909,20210614_1326,Performed,IT,Maya Israeli,036789592,,,F,1985-03-30,06/14/2021,36.21,97,160.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2910,20210613_1751,Performed,IT,Noa Shpigel,313321689,,,F,1995-05-26,06/13/2021,26.05,84,159.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2912,20210609_1559,Performed,YA,Oded Bashari,000000000,054-4224868,0,M,1974-09-10,06/09/2021,46.75,83,165.0,Blind,Blind,,,,0000,None,0,,missing qcode
+2917,20210601_1620,Performed,YA,Eldad Marshi,000000000,054-5371009,0,M,1979-08-09,06/01/2021,41.81,110,180.0,Blind,Blind,,,,0000,None,0,,missing qcode
+2968,20210414_1004,Performed,IT,Maya Marcus,208993832,,,F,1997-05-28,04/14/2021,23.88,75,159.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2969,20210413_1659,Performed,IT,Shir Shavit,207424268,,,F,1999-02-15,04/13/2021,22.16,53,150.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2970,20210413_1532,Performed,IT,Ronnie Griness,316113026,,,F,1995-05-21,04/13/2021,25.9,82,157.0,Tavor,Tavor,,,,0000,,2,,missing qcode
+2971,20210412_1552,Performed,YA,Gigi Levy Weiss,028917854,,,M,1971-10-16,04/12/2021,49.49,,,The Base,Brainbank,,,,0000,None,1,,missing qcode
+2973,20210411_1510,Performed,IT,Chen Gilat,316351113,,,F,1997-05-02,04/11/2021,23.94,52,156.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2974,20210411_0914,Performed,IT,Itay Yehezkel,208130245,,,M,1999-09-17,04/11/2021,21.57,78,173.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2980,20210406_1539,Performed,IT,Shirly Someck,203748447,,,F,1991-12-09,04/06/2021,29.33,50,163.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2981,20210405_1720,Performed,IT,Shir Oren,205588692,,,F,1994-11-09,04/05/2021,26.41,54,152.0,Tavor,Tavor,,,,0000,,2,,missing qcode
+2982,20210405_1551,Performed,IT,Merav Aschheim,204901813,,,F,1997-05-18,04/05/2021,23.88,54,158.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2983,20210405_1003,Performed,IT,Inbal Kuperwasser,313417206,,,F,1995-10-24,04/05/2021,25.45,60,163.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2984,20210405_0829,Performed,IT,Nir Doron,315872580,,,M,1996-08-08,04/05/2021,24.66,70,170.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2985,20210404_1549,Performed,IT,Yisgav Hamawi,312563547,,,M,1997-01-27,04/04/2021,24.19,90,173.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2988,20210404_1107,Performed,IT,Ziv Gilboa,204806566,,,F,1996-03-03,04/04/2021,25.09,84,175.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+2989,20210404_0940,Performed,IT,Daniel Ben Shabat,315477539,,,F,1996-08-18,04/04/2021,24.63,53,167.0,Tavor,Tavor,,,,0000,,1,,missing qcode
+3025,20201220_1507,Performed,YG,Miron Hayes,345527188,,,M,1996-06-29,12/20/2020,24.47,80,186.0,Gepner,Gepner,,,,0000,,1,,missing qcode
+3026,20201220_1419,Performed,YG,Yonatan Eliyahu,300309036,,,M,1987-04-16,12/20/2020,33.68,127,186.0,Gepner,Gepner,,,,0000,,1,,missing qcode
+3027,20201217_1924,Performed,YG,Itzhak Manshuri,305542896,,,M,1991-03-31,12/17/2020,29.71,105,180.0,Gepner,Gepner,,,,0000,,1,,missing qcode
+3028,20201217_1052,Performed,YG,Ofek Essenfeld,319040713,,,M,1998-10-15,12/17/2020,22.17,70,171.0,Gepner,Gepner,,,,0000,,1,,missing qcode
+3034,20201214_2014,Performed,YG,Yehoshaa Kashnow,325304061,,,M,2000-12-29,12/14/2020,19.96,80,175.0,Gepner,Gepner,,,,0000,,1,,missing qcode
+3035,20201214_1905,Performed,YG,Seena Abass,311488944,,,M,1993-08-17,12/14/2020,27.32,108,190.0,Gepner,Gepner,,,,0000,,1,,missing qcode
+3036,20201214_1753,Performed,YG,Aviram Cohen,319021747,,,M,1997-12-02,12/14/2020,23.03,152,193.0,Gepner,Gepner,,,,0000,,1,,missing qcode
+3037,20201214_1322,Performed,YG,Amitai Chubinsky,305089252,,,M,1991-04-04,12/14/2020,29.69,97,186.0,Gepner,Gepner,,,,0000,,1,,missing qcode
+3038,20201214_1044,Performed,YG,Shachar Regev,021657721,,,M,1985-06-07,12/14/2020,35.52,82,178.0,Gepner,Gepner,,,,0000,,1,,missing qcode
+3039,20201214_0929,Performed,YG,Barak Rahabi,304978869,,,M,1990-12-29,12/14/2020,29.96,63,177.0,Gepner,Gepner,,,,0000,,1,,missing qcode
+3040,20201214_0823,Performed,YG,Gideon Reiz,340879956,,,M,1991-08-05,12/14/2020,29.36,95,186.0,Gepner,Gepner,,,,0000,,1,,missing qcode
+3041,20201213_1049,Performed,YA,Bushari Iska,038171278,,,F,1986-06-20,12/13/2020,34.48,57,160.0,The Base,Brainbank,,,,0000,None,1,,missing qcode
+3042,20201213_0942,Performed,YA,Odia Yitzahk,021530142,,,F,1985-04-24,12/13/2020,35.64,75,151.0,The Base,Brainbank,,,,0000,None,1,,missing qcode
+3043,20201213_0835,Performed,YA,Revaya Halevi,302961784,,,F,1989-11-26,12/13/2020,31.05,61,160.0,The Base,Brainbank,,,,0000,None,1,,missing qcode
+3061,20201126_1026,Performed,YA,Moshe Besso,003390451,0,0,M,1977-01-29,11/26/2020,43.83,,,The Base,Brainbank,,,,0000,None,1,,missing qcode
+3082,20201110_1323,Performed,YA,Yoni Katzir,200122885,,,M,1987-06-28,11/10/2020,33.37,,,The Base,Brainbank,,,,0000,None,2,,missing qcode
+3087,20201108_1426,Performed,IT,Maya Dor On,313586034,,,F,1994-10-28,11/08/2020,26.03,,,Tavor,Tavor,,,,0000,,1,,missing qcode
+3088,20201108_1119,Performed,YA,Israel Kabara,050695071,0,0,M,1951-09-12,11/08/2020,69.16,72,163.0,The Base,Brainbank,,,,0000,None,1,,missing qcode
+3129,20200728_1700,Performed,YA,Tania Kudinov,321989923,,,F,1991-09-14,07/28/2020,28.87,57,168.0,The Base,Brainbank,,,,0000,None,1,,missing qcode
+3170,20200517_1647,Performed,YA,Shahar Levy Zlekha,205700016,,,F,1994-06-30,05/17/2020,25.88,,,The Base,Brainbank,,,scan completion,0000,None,3,,missing qcode
+3181,20200312_1554,Performed,YA,Razy Kniaziker,000000000,052-3649812,reizyf@gmail.com,F,1977-11-26,03/12/2020,42.29,58,170.0,Parents,Brainbank,,,,0169,None,0,,missing ID
+3197,20200120_1323,Performed,YA,Yael Shavit,305219271,,,F,1992-05-27,01/20/2020,27.65,58,167.0,The Base,Brainbank,,,,0000,None,1,,missing qcode
+3210,20191219_0843,Performed,YA,Bar Rozenman,203765110,,barrozenman@gmail.com,M,1992-09-04,12/19/2019,27.29,79,177.0,The Base,Brainbank,,,,0000,None,2,,missing qcode
+3221,20191202_1636,Performed,IT,Gali Emanuel Maor,316406180,,,F,1995-04-06,12/02/2019,24.65,,,Tavor,Tavor,,,,0000,,1,,missing qcode
+3237,20190910_1133,Performed,YA,Bar Rozenman,203765110,,barrozenman@gmail.com,M,1992-09-04,09/10/2019,27.02,78,175.0,The Base,Brainbank,,,,0000,None,2,,missing qcode
+3253,20190818_1154,Performed,YA,Dor Ben Nun,203516885,545222116,dorbenun1@gmail.com,M,1992-04-20,08/18/2019,27.33,115,178.0,The Base,Brainbank,,,,0000,None,1,,missing qcode
+3255,20190814_1306,Performed,YA,Neta Meir,203914577,522417435,netameir54@gmail.com,F,1992-03-01,08/14/2019,27.45,78,170.0,The Base,Brainbank,,,,0000,None,1,,missing qcode
+3260,20190725_1258,Performed,YA,Ido Fishler,038752143,054-5348060,‫ido@f2vc.com‬,M,1983-09-21,07/25/2019,35.84,73,179.0,The Base,Brainbank,,,,0000,None,1,,missing qcode
+3261,20190724_0902,Performed,YA,Karin Hilovich,041861329,503220301,karin2881@gmail.com,F,1981-08-02,07/24/2019,37.98,80,164.0,The Base,Brainbank,,,,0000,None,1,,missing qcode
+3262,20190722_0922,Performed,YA,Ilia Altshouler,310012158,508838017,ilia.altshouler@gmail.com‏,M,1985-08-21,07/22/2019,33.92,,,The Base,Brainbank,,,,0000,None,1,,missing qcode
+3263,20190715_0855,Performed,YA,Adi Cohen,205588197,,,F,1994-11-04,07/15/2019,24.7,60,167.0,The Base,Brainbank,,,,0000,None,3,,missing qcode
+3380,20190122_1110,Performed,YA,Rinat Spivak,036591808,548007678,rinatspivak@gmail.com,F,1984-10-17,01/22/2019,34.26,,,The Base,Brainbank,,,,0000,None,2,,missing qcode
+3382,20190122_0901,Performed,YA,Rinat Spivak,036591808,0,0,F,1984-10-17,01/22/2019,34.26,55,170.0,The Base,Brainbank,,,,0000,None,2,,missing qcode
+3392,20181220_1458,Performed,IT,Amir Mano,205779788,,,M,1994-11-14,12/20/2018,24.1,,,Tavor,Tavor,,,,0000,,6,,missing qcode
+3395,20181217_1716,Performed,YA,Shachar Sagiv,307938241,,,M,1993-08-24,12/17/2018,25.31,75,175.0,The Base,Brainbank,,,,0000,None,2,,missing qcode
+3396,20181217_0924,Performed,YA,Shay Ozer,025489154,526747467,,M,1973-06-16,12/17/2018,45.5,85,170.0,The Base,Brainbank,,,,0000,None,1,,missing qcode
+3410,20181206_1459,Performed,YA,Gal Hershkovitz,308418185,,,M,1993-03-19,12/06/2018,25.71,,,The Base,Brainbank,,,,0000,None,7,,missing qcode
+3421,20181204_1039,Performed,YA,Ronnie Krupnik,200115228,,,F,1992-04-11,12/04/2018,26.65,52,153.0,The Base,Brainbank,,,,0000,None,5,,missing qcode
+3423,20181203_1142,Performed,YA,Sapir Nagar,203947270,,,F,1991-06-13,12/03/2018,27.47,,,The Base,Brainbank,,,,0000,None,1,,missing qcode
