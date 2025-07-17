@@ -1,3 +1,6 @@
+import json
+import os
+
 import environ
 import gspread as gs
 import pandas as pd
@@ -9,6 +12,48 @@ from plasticityhub.scans.models import Session
 from plasticityhub.studies.models import Condition, Group, Lab, Study
 from plasticityhub.subjects.models import Subject
 from plasticityhub.utils.management.static.database_mapping import COLUMNS_MAPPING
+from plasticityhub.utils.management.static.questionnaire_mapping import (
+    QUESTIONNAIRE_MAPPING,
+)
+
+REMOTE_MOUNTS = {"/mnt/62": "\\132.66.46.62", "/mnt/snbb": "\\132.66.46.165"}
+CSV_OUTPUT_FILE = "sessions.csv"
+QUETIONNAIRE_KEYS = [
+    "PI006",
+    # "PI004",
+    # "PI005",
+    "PI007",
+    "PI012",
+    "PI002",
+    "PI013",
+    "PI014",
+    "LS005",
+    "SE001",
+    "SE008",
+    "SE010",
+    "SE011",
+    "SE012",
+]
+
+
+def gather_questionnaire_data(session: Session):
+    """
+    Gather the questionnaire data from the session.
+
+    Parameters
+    ----------
+    session : Session
+        The session to gather the data.
+    """
+    questionnaire = session.questionnaire_response
+    if questionnaire is None:
+        return {}
+    result = {}
+    for key in QUETIONNAIRE_KEYS:
+        field = QUESTIONNAIRE_MAPPING.get(key).get("field")
+        if field:
+            result[field] = questionnaire.full_response.get(key)
+    return result
 
 
 def reformat_df(df: pd.DataFrame) -> pd.DataFrame:
@@ -75,7 +120,10 @@ def get_or_create_subject(subject_kwargs: dict, session_kwargs: dict):
         The session object.
     """
     # check for existing subject
-    subject = Subject.objects.filter(subject_id=subject_kwargs["subject_id"]).first()
+    subject = Subject.objects.filter(
+        subject_id=subject_kwargs["subject_id"],
+        subject_code=subject_kwargs["subject_code"],
+    ).first()
     # if subject exists, update the subject
     if subject:
         for key, value in subject_kwargs.items():
@@ -105,7 +153,38 @@ def get_or_create_subject(subject_kwargs: dict, session_kwargs: dict):
     return subject
 
 
-def process_row(row: pd.Series):
+def validate_existing_session(session_kwargs: dict):
+    """
+    Check if the session is unique based on the provided information.
+    If it exists, make sure all the information is the same.
+    If the information is different, delete the existing session and create a new one.
+
+    Parameters
+    ----------
+    session_kwargs : dict
+        The keyword arguments to create the session.
+
+    Returns
+    -------
+    bool
+        True if the session is unique, False otherwise.
+    """
+    existing_session = Session.objects.filter(
+        origin_session_id=session_kwargs["origin_session_id"]
+    ).first()
+    if not existing_session:
+        return True
+    for key, value in session_kwargs.items():
+        if getattr(existing_session, key) != value:
+            print(
+                f"Deleting session {existing_session.session_id} due to {key} mismatch."
+            )
+            existing_session.delete()
+            return True
+    return False
+
+
+def process_row(row: pd.Series, mapped_rawdata: dict):
     """
     Process a row from the DataFrame and update the database with the information.
 
@@ -146,39 +225,14 @@ def process_row(row: pd.Series):
             "lab": lab,
         },
     )
+    _ = validate_existing_session(session_kwargs)
     session, _ = Session.objects.get_or_create(**session_kwargs)
-
-
-def google_authenticate(
-    credentials: str, authorized_user: str, force_new: bool = False
-):
-    """
-    Authenticate with Google.
-
-    Parameters
-    ----------
-    credentials : str
-        The path to the credentials file.
-    authorized_user : str
-        The authorized user email.
-    """
-    # Authenticate and create the PyDrive client
-    gauth = GoogleAuth()
-    gauth.settings["client_config_file"] = credentials
-    # Check whether the credentials are expired
-    if gauth.credentials is None or gauth.access_token_expired or force_new:
-        print("Google credentials are expired or not found.")  # noqa: T201
-        print("Authenticating with Google...")  # noqa: T201
-        # Authenticate if credentials are not there
-        # gauth.LocalWebserverAuth()
-        gauth.CommandLineAuth()
-        gauth.SaveCredentialsFile(authorized_user)
-    else:
-        # Initialize the saved credentials
-        gauth.LoadCredentialsFile(authorized_user)
-        gauth.Authorize()
-    # Save the current credentials to a file for future use
-    gauth.SaveCredentialsFile(authorized_user)
+    rawdata_path = mapped_rawdata.get(session.origin_session_id)
+    if rawdata_path:
+        # for local_mount, remote_mount in REMOTE_MOUNTS.items():
+        #     rawdata_path = rawdata_path.replace(local_mount, remote_mount)
+        session.rawdata_path = rawdata_path
+    session.save()
 
 
 def load_data_from_sheet(
@@ -203,8 +257,6 @@ def load_data_from_sheet(
     pd.DataFrame
         The data from the Google Sheet.
     """
-    # Authenticate with Google
-    google_authenticate(credentials, authorized_user)
     gc_kwargs = {}
     if credentials:
         gc_kwargs["credentials_filename"] = credentials
@@ -222,7 +274,28 @@ def load_data_from_sheet(
     return pd.DataFrame(data[1:], columns=data[0])
 
 
-def update_database_from_sheet(sheet_key: str, credentials: str, authorized_user: str):
+def load_mapped_rawdata(mapped_rawdata_path: str) -> dict:
+    """
+    Load the mapped rawdata from a file.
+
+    Parameters
+    ----------
+    mapped_rawdata_path : str
+        The path to the mapped rawdata file.
+
+    Returns
+    -------
+    dict
+        The mapped rawdata.
+    """
+    with open(mapped_rawdata_path, "r") as f:
+        mapped_rawdata = json.load(f)
+    return mapped_rawdata
+
+
+def update_database_from_sheet(
+    sheet_key: str, credentials: str, authorized_user: str, mapped_rawdata_path: str
+):
     """
     Update the database with information from a Google Sheet.
 
@@ -244,10 +317,12 @@ def update_database_from_sheet(sheet_key: str, credentials: str, authorized_user
     # Reformat the DataFrame
     crf_df = reformat_df(crf_df)
 
+    # Load the mapped rawdata
+    mapped_rawdata = load_mapped_rawdata(mapped_rawdata_path)
     # Update the database with the information from the DataFrame
     for i, row in tqdm.tqdm(crf_df.iterrows()):
         try:
-            process_row(row)
+            process_row(row, mapped_rawdata)
         except Exception as e:  # noqa: BLE001
             print(f"\nError processing row {i}:\n")  # noqa: T201
             print(f"name: {row['name']}")
@@ -257,12 +332,122 @@ def update_database_from_sheet(sheet_key: str, credentials: str, authorized_user
                 raise e
 
 
+def output_to_csv(output_path: str = CSV_OUTPUT_FILE):
+    """
+    Output all sessions and some relevant information to a CSV file.
+
+    Parameters
+    ----------
+    output_path : str
+        The path to the output CSV file.
+    """
+    sessions = Session.objects.all()
+    df = pd.DataFrame(
+        index=range(len(sessions)),
+        columns=[
+            "subject_code",
+            "subject_id",
+            "dob",
+            "age_at_scan",
+            "sex",
+            "session_id",
+            "study",
+            "group",
+            "condition",
+            "path",
+        ],
+    )
+    for i, session in enumerate(sessions):
+        for key, value in zip(
+            [
+                "subject_code",
+                "subject_id",
+                "dob",
+                "age_at_scan",
+                "sex",
+                "weight",
+                "height",
+                "session_id",
+                "study",
+                "group",
+                "condition",
+                "path",
+            ],
+            [
+                session.subject.subject_code,
+                session.subject.subject_id,
+                session.subject.date_of_birth,
+                session.age_at_scan,
+                session.subject.sex,
+                session.subject.weight,
+                session.subject.height,
+                session.session_id,
+                session.study.name,
+                session.group.name,
+                session.condition.name,
+                session.rawdata_path,
+            ],
+            strict=False,
+        ):
+            df.loc[i, key] = value
+        # df.loc[i] = [
+        #     session.subject.subject_code,
+        #     session.subject.subject_id,
+        #     session.subject.date_of_birth,
+        #     session.age_at_scan,
+        #     session.subject.sex,
+        #     session.session_id,
+        #     session.study.name,
+        #     session.group.name,
+        #     session.condition.name,
+        #     session.rawdata_path,
+        # ]
+        for key, value in gather_questionnaire_data(session).items():
+            df.loc[i, key] = value
+    df["path"] = df["path"].replace("", pd.NA)
+    df.to_csv(output_path, index=False)
+    os.system(
+        f"rsync -azPL {output_path} yalab_dev@biden.tau.ac.il:/home/yalab_dev/yalab-devops"
+    )
+
+
+def output_to_csv_with_derivatives(output_path: str = CSV_OUTPUT_FILE):
+    """
+    Output all sessions and some relevant information to a CSV file.
+
+    Parameters
+    ----------
+    output_path : str
+        The path to the output CSV file.
+    """
+    sessions = Session.objects.all()
+    df = pd.DataFrame(
+        index=range(len(sessions)),
+        columns=["subject_code", "session_id", "bids", "keprep", "kepost"],
+    )
+    for i, session in enumerate(sessions):
+        df.loc[i] = [
+            session.subject.subject_code,
+            session.session_id,
+            session.study.name,
+            session.group.name,
+            session.condition.name,
+            session.rawdata_path,
+        ]
+    df["path"] = df["path"].replace("", pd.NA)
+    df.to_csv(output_path, index=False)
+    os.system(
+        f"rsync -azPL {output_path} yalab_dev@biden.tau.ac.il:/home/yalab_dev/yalab-devops"
+    )
+
+
 class Command(BaseCommand):
     help = "Update the database with information from an Excel file."
     env = environ.Env()
     sheet_key = env("CRF_SHEET_KEY", default=None)
     credentials = env("GSPREAD_CREDENTIALS", default=None)
     authorized_user = env("GSPREAD_AUTHORIZED_USER", default=None)
+    mapped_rawdata_path = env("MAPPED_RAWDATA_PATH", default=None)
 
     def add_arguments(self, parser):
         parser.add_argument(
@@ -286,10 +471,20 @@ class Command(BaseCommand):
             help="Authorized user email",
             default=self.authorized_user,
         )
+        parser.add_argument(
+            "--mapped_rawdata_path",
+            type=str,
+            nargs="?",
+            help="Path to the mapped rawdata file",
+            default=self.mapped_rawdata_path,
+        )
 
     def handle(self, *args, **kwargs):
         sheet_key = kwargs["sheet_key"]
         credentials = kwargs["credentials"]
         authorized_user = kwargs["authorized_user"]
-        update_database_from_sheet(sheet_key, credentials, authorized_user)
+        update_database_from_sheet(
+            sheet_key, credentials, authorized_user, kwargs["mapped_rawdata_path"]
+        )
+        output_to_csv()
         self.stdout.write(self.style.SUCCESS("Database updated successfully."))
