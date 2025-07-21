@@ -45,11 +45,11 @@ def gather_questionnaire_data(session: Session):
     session : Session
         The session to gather the data.
     """
-    questionnaire = session.questionnaire_response
+    questionnaire = session.subject.questionnaire_responses.first()
     if questionnaire is None:
         return {}
     result = {}
-    for key in QUETIONNAIRE_KEYS:
+    for key in QUESTIONNAIRE_MAPPING:
         field = QUESTIONNAIRE_MAPPING.get(key).get("field")
         if field:
             result[field] = questionnaire.full_response.get(key)
@@ -403,7 +403,13 @@ def output_to_csv(output_path: str = CSV_OUTPUT_FILE):
         #     session.rawdata_path,
         # ]
         for key, value in gather_questionnaire_data(session).items():
-            df.loc[i, key] = value
+            if key in ["weight", "height"]:
+                # only insert value if it doesn't exist
+                if pd.isna(df.loc[i, key]) or df.loc[i, key] == "":
+                    df.loc[i, key] = value
+            else:
+                # insert value regardless
+                df.loc[i, key] = value
     df["path"] = df["path"].replace("", pd.NA)
     df.to_csv(output_path, index=False)
     os.system(

@@ -27,8 +27,8 @@ def reformat_df(df: pd.DataFrame) -> pd.DataFrame:
     pd.DataFrame
         The reformatted DataFrame.
     """
-    df.columns = df.columns.str.lower()
-    df = df.rename(columns=COLUMNS_MAPPING)
+    # df.columns = df.columns.str.lower()
+    # df = df.rename(columns=COLUMNS_MAPPING)
     for col, mapping in QUESTIONNAIRE_MAPPING.items():
         if col not in df.columns:
             continue
@@ -39,9 +39,7 @@ def reformat_df(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def load_data_from_sheet(
-    sheet_key: str,
-    credentials: str,
-    authorized_user: str,
+    sheet_key: str, credentials: str, authorized_user: str
 ) -> pd.DataFrame:
     """
     Load the data from a Google Sheet.
@@ -110,25 +108,26 @@ def update_sessions(subject: Subject, questionnaire_response: QuestionnaireRespo
         The questionnaire response to associate with the sessions.
     """
     for session in subject.sessions.all():
-        if session.questionnaire_response is None:
-            session.questionnaire_response = questionnaire_response
+        session.questionnaire_response = questionnaire_response
+        if questionnaire_response.full_response["Questionnaire"] != "No":
             session.time_between_questionnaire_and_scan = (  # type: ignore[attr-defined]
                 session.timestamp - questionnaire_response.timestamp
             )
-            session.save()
-        else:
-            # check to see if the current response is closer in time to the session
-            if (
-                session.questionnaire_response.timestamp
-                and questionnaire_response.timestamp
-                and abs(session.questionnaire_response.timestamp - session.timestamp)
-                > abs(questionnaire_response.timestamp - session.timestamp)
-            ):
-                session.questionnaire_response = questionnaire_response
-                session.time_between_questionnaire_and_scan = (  # type: ignore[attr-defined]
-                    session.timestamp - questionnaire_response.timestamp
-                )
-                session.save()
+        session.save()
+        # if session.questionnaire_response is None:
+        # else:
+        #     # check to see if the current response is closer in time to the session
+        #     if (
+        #         session.questionnaire_response.timestamp
+        #         and questionnaire_response.timestamp
+        #         and abs(session.questionnaire_response.timestamp - session.timestamp)
+        #         > abs(questionnaire_response.timestamp - session.timestamp)
+        #     ):
+        #         session.questionnaire_response = questionnaire_response
+        #         session.time_between_questionnaire_and_scan = (  # type: ignore[attr-defined]
+        #             session.timestamp - questionnaire_response.timestamp
+        #         )
+        #         session.save()
 
 
 def process_row(row: pd.Series):
@@ -140,13 +139,15 @@ def process_row(row: pd.Series):
     row : pd.Series
         The row to process.
     """
-    subject_code = row.get("subject.code")
+    subject_code = row.get("Subject Code")
     subjects = Subject.objects.filter(subject_code=subject_code)
     if not subjects.exists():
-        print(f"Subject with ID {row.get('subject.code')} not found")
+        print(f"Error on row {row.name}: Subject with code {subject_code} not found")
         return
     if subjects.count() > 1:
-        print(f"Multiple subjects with ID {row.get('subject.code')} found")
+        print(
+            f"Error on row {row.name}: Multiple subjects found with code {subject_code}"
+        )
         return
     subject = subjects.first()
     questionnaire_response = make_questionnaire_response(subject, row)  # type: ignore[arg-type]
@@ -167,6 +168,7 @@ def update_database_from_sheet(sheet_key: str, credentials: str, authorized_user
     authorized_user : str
         The authorized user email.
     """
+    QuestionnaireResponse.objects.all().delete()
     # Load the data from the Google Sheet
     q_df = load_data_from_sheet(
         sheet_key,
@@ -179,6 +181,8 @@ def update_database_from_sheet(sheet_key: str, credentials: str, authorized_user
     # Update the database with the information from the DataFrame
     for i, row in tqdm.tqdm(q_df.iterrows()):
         try:
+            if row["Questionnaire"] == "No":
+                continue
             process_row(row)
         except Exception as e:  # noqa: BLE001
             print(f"\nError processing row {i}: {row}")  # noqa: T201

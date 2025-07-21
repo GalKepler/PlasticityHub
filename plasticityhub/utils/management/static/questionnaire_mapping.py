@@ -1,5 +1,5 @@
 QUESTIONNAIRE_MAPPING = {
-    "PI001": {"field": "sex", "mapper": {"נקבה": "F", "זכר": "M"}},
+    "Gender": {"field": "sex", "mapper": {"Female": "F", "Male": "M", "": "U"}},
     "version": {
         "field": "version",
         "mapper": {
@@ -9,99 +9,226 @@ QUESTIONNAIRE_MAPPING = {
             "גרסה 1 (2021) עם השלמות של גרסה 3": "1 (2021) with 3 (2024) supplements",
         },
     },
-    "PI002": {
+    "DominantHand": {
         "field": "handedness",
         "mapper": {
-            "ימין": "R",
-            "שמאל": "L",
-            "אין לי יד דומיננטית": "A",
-            "לא מוחלט": "A",
+            "Right": "R",
+            "Left": "L",
+            "Both": "A",
+            "": "U",
         },
     },
-    "PI004": {"field": "weight"},
-    "PI005": {"field": "height"},
-    "PI006": {
+    "Weight (kg)": {"field": "weight"},
+    "Height (cm)": {"field": "height"},
+    "Gender Indentity": {
         "field": "gender",
         "mapper": {
-            "סיסג'נדר (זכר שמזדהה כגבר \ נקבה שמזדהה כאישה)": "cisgender",
-            "טרנסג'נדר (זכר שמזדהה כאישה \ נקבה שמזדהה כגבר)": "transgender",
-            "ג'נדר-פלואיד (הזהות המגדרית שלי אינה קבועה)": "gender-fluid",
-            "אינני מזוהה עם מגדר מסוים": "non-binary",
-            "גבר": "M",
-            "אישה": "F",
-            "א-בינארי": "non-binary",
-            "אחר": "other",
+            "Cisgender": "cisgender",
+            "Transgender": "transgender",
+            "A-binary": "non-binary",
+            "": "U",
         },
     },
-    "PI007": {
+    "Sexual Orientation": {
         "field": "sexual_orientation",
         "mapper": {
-            "הטרוסקסואל": "heterosexual",
-            "הטרוסקסואל/ית": "heterosexual",
-            "הומוסקסואל": "homosexual",
-            "הומוסקסואל/ית": "homosexual",
-            "ביסקסואל": "bisexual",
-            "ביסקסואל/ית": "bisexual",
-            "אסקסואל": "asexual",
-            "אסקסואל/ית": "asexual",
-            "פאנסקסואל": "pansexual",
-            "פאנסקסואל/ית": "pansexual",
-            "מעדיף לא לענות": "prefer not to answer",
-            "אחר": "other",
+            "Heterosexual": "heterosexual",
+            "Homosexual/Lesbian": "homosexual",
+            "Bisexual": "bisexual",
+            "Asexual": "asexual",
+            "Pansexual": "pansexual",
+            "Other/Don't want to answer": "U",
+            "": "U",
         },
     },
-    "PI012": {
+    "Living environment": {"field": "living_environment"},
+    "Years in Residence": {
+        "field": "years_in_residence",
+    },
+    "Marital Status": {
         "field": "marital_status",
         "mapper": {
-            "רווק/ה": "single",
-            "רווק": "single",
-            "נשוי/ה": "married",
-            "נשוי": "married",
-            "גרוש/ה": "divorced",
-            "גרוש": "divorced",
-            "אלמן/ה": "widowed",
-            "אלמן": "widowed",
-            "בזוגיות": "in a relationship",
-            "אחר": "other",
+            "Single": "single",
+            "Married": "married",
+            "Common-Law Partner": "common-law partner",
+            "Divorced": "divorced",
+            "Widow/er": "widowed",
+            "Seperated": "separated",
+            "In Relationship": "in a relationship",
+            "": "U",
         },
     },
-    "PI013": {
+    "Years in relationship": {
         "field": "relationship_duration",
     },
-    "PI014": {
+    "Number of Children": {
         "field": "number_of_children",
     },
-    "LS005": {
-        "field": "exercise_frequency",
-        "mapper": {"0": 0, "1-2": 1.5, "3-4": 3.5, "5+": 5},
+    "Number of Sibling": {
+        "field": "number_of_siblings",
     },
-    "SE001": {
-        "field": "education_level",
+    "Your Sibling Order": {
+        "field": "sibling_order",
+    },
+    "Twins": {
+        "field": "twins",
         "mapper": {
-            "בית ספר יסודי": "elementary school",
-            "יסודית": "elementary school",
-            "על-תיכונית": "post-secondary",
-            "תיכונית מלאה": "full high school",
-            "תיכונית": "high school",
-            "תיכונית חלקית": "partial high school",
-            "תואר ראשון": "bachelor's degree",
-            "תואר שני ומעלה": "master's degree or higher",
-            "": "other",
+            "No": False,
+            "Identical": "identical",
+            "Non-Identical": "non-identical",
         },
     },
+    "EthnicalIdentity": {
+        "field": "ethnic_identity",
+    },
+    "PoliticalOrientation": {
+        "field": "political_orientation",
+    },
+    "Religion": {"field": "religion"},
+    "ReligionDegree": {
+        "field": "religion_degree",
+    },
+    "FamilyHistory": {
+        "field": "family_history",
+    },
+    "BloodSuger": {
+        "field": "blood_sugar",
+    },
+    "BloodPressure": {
+        "field": "blood_pressure",
+    },
+    "Thyroids": {
+        "field": "thyroids",
+    },
+    "Lipids": {
+        "field": "lipids",
+    },
+    "SevereHealthConditions": {
+        "field": "severe_health_conditions",
+    },
+    "MajorHealthConditions": {
+        "field": "major_health_conditions",
+    },
+    "MinorHealthConditions": {
+        "field": "minor_health_conditions",
+    },
+    "BrainHealth": {
+        "field": "brain_health",
+    },
+    "Depression": {
+        "field": "depression",
+        "mapper": {
+            "0": False,
+            "1": True,
+        },
+    },
+    "Anxiety": {
+        "field": "anxiety",
+        "mapper": {
+            "0": False,
+            "1": True,
+        },
+    },
+    "CommunicationDisorders": {
+        "field": "communication_disorders",
+        "mapper": {
+            "0": False,
+            "1": True,
+        },
+    },
+    "AttentionDisorders": {
+        "field": "attention_disorders",
+        "mapper": {
+            "0": False,
+            "1": True,
+        },
+    },
+    "VisualAid": {
+        "field": "visual_aid",
+        "mapper": {
+            "No": False,
+            "Yes": True,
+        },
+    },
+    "HearingAid": {
+        "field": "hearing_aid",
+        "mapper": {
+            "No": False,
+            "Yes": True,
+        },
+    },
+    "PSQI": {
+        "field": "psqi",
+    },
+    "LongCovid": {
+        "field": "long_covid",
+        "mapper": {
+            "No": False,
+            "Yes": True,
+            "LongCovid": True,
+        },
+    },
+    "OASIS": {
+        "field": "oasis",
+    },
+    "PCL-5": {
+        "field": "pcl5",
+    },
+    "GAD-7": {
+        "field": "gad7",
+    },
+    "PHQ9": {
+        "field": "phq9",
+    },
+    "B5 Extraversion": {
+        "field": "b5_extraversion",
+    },
+    "B5 Agreeableness": {
+        "field": "b5_agreeableness",
+    },
+    "B5 Conscientiousness": {
+        "field": "b5_conscientiousness",
+    },
+    "B5 EmotionalStability": {
+        "field": "b5_emotional_stability",
+    },
+    "B5 Openness": {
+        "field": "b5_openness",
+    },
+    "SubjectiveHappiness": {
+        "field": "hli",
+    },
+    "SWLS": {
+        "field": "swls",
+    },
+    "Education": {
+        "field": "education_level",
+        "mapper": {
+            "High school graduate": "high school",
+            "Academic graduate": "bachelor's degree",
+            "Academic undergraduate": "undergraduate",
+            "Post-secondary school": "post-secondary",
+            "Partial high school": "partial high school",
+            "Elementary": "elementary school",
+            "": "U",
+        },
+    },
+    "Salary": {
+        "field": "salary",
+    },
     # פסיכומטרי
-    "SE008": {
-        "field": "psychometric_score_total",
-    },
-    "SE010": {
-        "field": "psychometric_score_verbal",
-    },
-    "SE011": {
-        "field": "psychometric_score_quantitative",
-    },
-    "SE012": {
-        "field": "psychometric_score_english",
-    },
+    # "SE008": {
+    #     "field": "psychometric_score_total",
+    # },
+    # "SE010": {
+    #     "field": "psychometric_score_verbal",
+    # },
+    # "SE011": {
+    #     "field": "psychometric_score_quantitative",
+    # },
+    # "SE012": {
+    #     "field": "psychometric_score_english",
+    # },
 }
 
 COLUMNS_MAPPING = {"": "subject_code"}

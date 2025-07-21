@@ -18,7 +18,7 @@ class QuestionnaireResponse(models.Model):
     )
 
     def __str__(self):
-        return f"{self.subject} - Questionnaire v{self.version}"
+        return f"{self.subject} - Questionnaire"
 
     class Meta:
         verbose_name = "Questionnaire Response"
@@ -26,22 +26,25 @@ class QuestionnaireResponse(models.Model):
 
     @property
     def timestamp(self):
-        return datetime.datetime.strptime(
-            self.full_response.get("time.stamp"), "%m/%d/%Y %H:%M:%S"
-        ).astimezone()
+        filled = self.full_response.get("Questionnaire")
+        dt = self.full_response.get("QTimeStamp")
+        if filled != "No":
+            return datetime.datetime.strptime(dt, "%m/%d/%Y").astimezone()
+        else:
+            return None
 
-    @property
-    def sex(self):
-        return self.full_response.get("sex")
+    # @property
+    # def sex(self):
+    #     return self.full_response.get("sex")
 
-    @property
-    def height(self):
-        return self.full_response.get("height")
+    # @property
+    # def height(self):
+    #     return self.full_response.get("height")
 
-    @property
-    def weight(self):
-        return self.full_response.get("weight")
+    # @property
+    # def weight(self):
+    #     return self.full_response.get("weight")
 
-    @property
-    def version(self):
-        return self.full_response.get("version")
+    # @property
+    # def version(self):
+    #     return self.full_response.get("version")
