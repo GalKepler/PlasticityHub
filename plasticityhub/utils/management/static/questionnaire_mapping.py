@@ -216,19 +216,29 @@ QUESTIONNAIRE_MAPPING = {
     "Salary": {
         "field": "salary",
     },
-    # פסיכומטרי
-    # "SE008": {
-    #     "field": "psychometric_score_total",
-    # },
-    # "SE010": {
-    #     "field": "psychometric_score_verbal",
-    # },
-    # "SE011": {
-    #     "field": "psychometric_score_quantitative",
-    # },
-    # "SE012": {
-    #     "field": "psychometric_score_english",
-    # },
+    "PsychometricScore": {
+        "field": "psychometric_score",
+    },
+    "MainHobby": {
+        "field": "main_hobby",
+    },
+    "HobbyTime": {
+        "field": "hobby_time",
+    },
+    "TimesTrainingPerWeek": {"field": "weekly_workouts"},
+    "TrainingGroup": {
+        "field": "training_alone",
+        "mapper": {
+            "Alone": True,
+            "Group": False,
+        },
+    },
+    "Caffeine": {
+        "field": "caffeine",
+    },
+    "Nutrition": {
+        "field": "nutrition",
+    },
 }
 
 COLUMNS_MAPPING = {"": "subject_code"}
