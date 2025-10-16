@@ -8,6 +8,7 @@ import tqdm
 from django.core.management.base import BaseCommand
 from pydrive.auth import GoogleAuth
 
+from plasticityhub.behavioral.questionnaire import QuestionnaireResponse
 from plasticityhub.scans.models import Session
 from plasticityhub.studies.models import Condition, Group, Lab, Study
 from plasticityhub.subjects.models import Subject
@@ -45,10 +46,12 @@ def gather_questionnaire_data(session: Session):
     session : Session
         The session to gather the data.
     """
-    questionnaire = session.subject.questionnaire_responses.first()
-    if questionnaire is None:
-        return {}
-    result = {}
+    questionnaire: QuestionnaireResponse = (
+        session.subject.questionnaire_responses.first()
+    )
+    if (questionnaire is None) or (not questionnaire.filled):
+        return {"filled": False}
+    result = {"filled": questionnaire.filled}
     for key in QUESTIONNAIRE_MAPPING:
         field = QUESTIONNAIRE_MAPPING.get(key).get("field")
         if field:
@@ -80,7 +83,7 @@ def reformat_df(df: pd.DataFrame) -> pd.DataFrame:
     df["dob"] = pd.to_datetime(df["dob"])
 
     # Pad the questionnaire and ID with leading zeros
-    df["qcode"] = df["qcode"].astype(str).str.zfill(4)
+    df["subjectcode"] = df["subjectcode"].astype(str).str.zfill(4)
     df["id"] = df["id"].astype(str).str.zfill(9)
 
     # Convert Sex to uppercase

@@ -61,7 +61,7 @@ COLUMNS_MAPPING = {
         "scope": "session",
         "field": "scan_tag",
     },
-    "qcode": {
+    "subjectcode": {
         "scope": "subject",
         "field": "subject_code",
     },
@@ -96,7 +96,7 @@ def reformat_df(df: pd.DataFrame) -> pd.DataFrame:
     df["dob"] = pd.to_datetime(df["dob"])
 
     # Pad the questionnaire and ID with leading zeros
-    df["qcode"] = df["qcode"].astype(str).str.zfill(4)
+    df["subjectcode"] = df["subjectcode"].astype(str).str.zfill(4)
     df["id"] = df["id"].astype(str).str.zfill(9)
 
     # Convert Sex to uppercase

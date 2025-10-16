@@ -45,6 +45,11 @@ class Subject(models.Model):
         blank=True,
         help_text="Unique identifier for questionnaires",
     )
+    uid = models.CharField(
+        max_length=50,
+        blank=True,
+        help_text="Unique identifier for the subject (UUID)",
+    )
     name = models.CharField(
         max_length=100,
         blank=True,

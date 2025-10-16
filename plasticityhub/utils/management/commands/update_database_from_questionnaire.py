@@ -1,8 +1,13 @@
+import random
+import time
+
 import environ
 import gspread as gs
 import pandas as pd
 import tqdm
 from django.core.management.base import BaseCommand
+from gspread.exceptions import APIError
+from requests.exceptions import RequestException
 
 from plasticityhub.behavioral.questionnaire import QuestionnaireResponse
 from plasticityhub.scans.models import Session
@@ -11,6 +16,72 @@ from plasticityhub.utils.management.static.questionnaire_mapping import (
     COLUMNS_MAPPING,
     QUESTIONNAIRE_MAPPING,
 )
+
+TRANSIENT_STATUSES = {429, 500, 502, 503, 504}
+
+
+def _get_all_values_with_retry(
+    ws, max_retries=6, base_delay=1.0, factor=2.0, max_delay=30.0, jitter=0.4
+):
+    """
+    Retry wrapper for worksheet.get_all_values() on transient HTTP errors.
+    """
+    delay = base_delay
+    last_exc = None
+    for attempt in range(1, max_retries + 1):
+        try:
+            return ws.get_all_values()
+        except APIError as e:
+            status = getattr(e.response, "status_code", None)
+            if status in TRANSIENT_STATUSES:
+                last_exc = e
+            else:
+                # Non-transient (e.g., 400/401/403/404): don't retry
+                raise
+        except RequestException as e:
+            # Network hiccup – safe to retry
+            last_exc = e
+
+        # Backoff + jitter
+        sleep_for = min(delay, max_delay) + random.random() * jitter
+        time.sleep(sleep_for)
+        delay *= factor
+
+    # Exhausted retries
+    raise last_exc if last_exc else RuntimeError("Unknown error fetching sheet values")
+
+
+def load_data_from_sheet(
+    sheet_key: str, credentials: str | None = None, authorized_user: str | None = None
+) -> pd.DataFrame:
+    gc_kwargs = {}
+    if credentials:
+        gc_kwargs["credentials_filename"] = credentials
+    if authorized_user:
+        gc_kwargs["authorized_user_filename"] = authorized_user
+
+    # Keep auth errors scoped to oauth only
+    try:
+        gc = gs.oauth(**gc_kwargs) if gc_kwargs else gs.oauth()
+    except Exception as e:  # auth issues only
+        raise RuntimeError(f"Failed to authenticate with Google Sheets: {e}") from e
+
+    # Open sheet (let this raise if key/permissions are wrong)
+    sheet = gc.open_by_key(sheet_key)
+    ws = sheet.get_worksheet(0)
+
+    # Retry the flaky part
+    data = _get_all_values_with_retry(ws)
+
+    if not data:
+        return pd.DataFrame()  # empty worksheet
+
+    # Build DataFrame (assumes first row is header)
+    if len(data) == 1:
+        # Headers only, no rows
+        return pd.DataFrame(columns=data[0])
+
+    return pd.DataFrame(data[1:], columns=data[0])
 
 
 def reformat_df(df: pd.DataFrame) -> pd.DataFrame:
@@ -38,41 +109,41 @@ def reformat_df(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-def load_data_from_sheet(
-    sheet_key: str, credentials: str, authorized_user: str
-) -> pd.DataFrame:
-    """
-    Load the data from a Google Sheet.
+# def load_data_from_sheet(
+#     sheet_key: str, credentials: str, authorized_user: str
+# ) -> pd.DataFrame:
+#     """
+#     Load the data from a Google Sheet.
 
-    Parameters
-    ----------
-    sheet_key : str
-        The Google Sheet Key.
-    credentials : str
-        The path to the credentials file.
-    authorized_user : str
-        The authorized user email.
+#     Parameters
+#     ----------
+#     sheet_key : str
+#         The Google Sheet Key.
+#     credentials : str
+#         The path to the credentials file.
+#     authorized_user : str
+#         The authorized user email.
 
-    Returns
-    -------
-    pd.DataFrame
-        The data from the Google Sheet.
-    """
-    gc_kwargs = {}
-    if credentials:
-        gc_kwargs["credentials_filename"] = credentials
-    if authorized_user:
-        gc_kwargs["authorized_user_filename"] = authorized_user
-    try:
-        gc = gs.oauth(**gc_kwargs)  # type: ignore[arg-type]
-        sheet = gc.open_by_key(sheet_key)
-    except Exception as e:  # noqa: BLE001
-        print(f"Error loading the Google Sheet: {e}")  # noqa: T201
-        gc = gs.oauth()
-        sheet = gc.open_by_key(sheet_key)
-    worksheet = sheet.get_worksheet(0)
-    data = worksheet.get_all_values()
-    return pd.DataFrame(data[1:], columns=data[0])
+#     Returns
+#     -------
+#     pd.DataFrame
+#         The data from the Google Sheet.
+#     """
+#     gc_kwargs = {}
+#     if credentials:
+#         gc_kwargs["credentials_filename"] = credentials
+#     if authorized_user:
+#         gc_kwargs["authorized_user_filename"] = authorized_user
+#     try:
+#         gc = gs.oauth(**gc_kwargs)  # type: ignore[arg-type]
+#         sheet = gc.open_by_key(sheet_key)
+#     except Exception as e:  # noqa: BLE001
+#         print(f"Error loading the Google Sheet: {e}")  # noqa: T201
+#         gc = gs.oauth()
+#         sheet = gc.open_by_key(sheet_key)
+#     worksheet = sheet.get_worksheet(0)
+#     data = worksheet.get_all_values()
+#     return pd.DataFrame(data[1:], columns=data[0])
 
 
 def make_questionnaire_response(subject: Subject, row: pd.Series):
@@ -109,7 +180,9 @@ def update_sessions(subject: Subject, questionnaire_response: QuestionnaireRespo
     """
     for session in subject.sessions.all():
         session.questionnaire_response = questionnaire_response
-        if questionnaire_response.full_response["Questionnaire"] != "No":
+        if (questionnaire_response.full_response["Questionnaire"] != "No") and (
+            questionnaire_response.full_response["QTimeStamp"] != ""
+        ):
             session.time_between_questionnaire_and_scan = (  # type: ignore[attr-defined]
                 session.timestamp - questionnaire_response.timestamp
             )

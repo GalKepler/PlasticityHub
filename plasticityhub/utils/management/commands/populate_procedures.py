@@ -22,7 +22,7 @@ def populate_kepost_procedures(qnap_path: str, overwrite: bool = False):
     for session in tqdm.tqdm(Session.objects.all()):
         kepost_output = list(
             qnap_path.glob(
-                f"share/Biden_Results/derivatives/kepost/sub-*/ses-{session.session_id}"
+                f"Processed_Data/derivatives/kepost/sub-*/ses-{session.session_id}"
             )
         )
         if not kepost_output:

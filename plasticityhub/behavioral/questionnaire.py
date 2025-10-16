@@ -7,6 +7,7 @@ from plasticityhub.subjects.models import Subject
 
 
 class QuestionnaireResponse(models.Model):
+
     subject = models.ForeignKey(
         Subject,
         on_delete=models.CASCADE,
@@ -17,34 +18,20 @@ class QuestionnaireResponse(models.Model):
         help_text="The response to the questionnaire",
     )
 
-    def __str__(self):
-        return f"{self.subject} - Questionnaire"
-
     class Meta:
         verbose_name = "Questionnaire Response"
         verbose_name_plural = "Questionnaire Responses"
 
+    def __str__(self):
+        return f"{self.subject} - Questionnaire"
+
     @property
     def timestamp(self):
-        filled = self.full_response.get("Questionnaire")
         dt = self.full_response.get("QTimeStamp")
-        if filled != "No":
+        if self.filled and dt != "":
             return datetime.datetime.strptime(dt, "%m/%d/%Y").astimezone()
-        else:
-            return None
+        return None
 
-    # @property
-    # def sex(self):
-    #     return self.full_response.get("sex")
-
-    # @property
-    # def height(self):
-    #     return self.full_response.get("height")
-
-    # @property
-    # def weight(self):
-    #     return self.full_response.get("weight")
-
-    # @property
-    # def version(self):
-    #     return self.full_response.get("version")
+    @property
+    def filled(self):
+        return self.full_response.get("Questionnaire") != "No"

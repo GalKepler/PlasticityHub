@@ -174,7 +174,7 @@ QUESTIONNAIRE_MAPPING = {
     "PCL-5": {
         "field": "pcl5",
     },
-    "GAD-7": {
+    "GAD7": {
         "field": "gad7",
     },
     "PHQ9": {
@@ -186,7 +186,7 @@ QUESTIONNAIRE_MAPPING = {
     "B5 Agreeableness": {
         "field": "b5_agreeableness",
     },
-    "B5 Conscientiousness": {
+    "B5 Coscientioness": {
         "field": "b5_conscientiousness",
     },
     "B5 EmotionalStability": {
@@ -233,11 +233,100 @@ QUESTIONNAIRE_MAPPING = {
             "Group": False,
         },
     },
+    "Takeout Frequency": {
+        "field": "takeout_frequency",
+    },
+    "DineOutFrequency": {
+        "field": "dine_out_frequency",
+    },
     "Caffeine": {
         "field": "caffeine",
     },
+    "Water": {
+        "field": "water",
+    },
+    "SugarBeverages": {
+        "field": "sugar_beverages",
+    },
+    "Alcohol": {
+        "field": "alcohol",
+    },
     "Nutrition": {
         "field": "nutrition",
+    },
+    "Smoking": {
+        "field": "smoking",
+        "mapper": {
+            "No": False,
+            "Yes": True,
+        },
+    },
+    "Canabis": {
+        "field": "cannabis",
+        "mapper": {
+            "No": False,
+            "Yes": True,
+        },
+    },
+    "OtherDrugs": {
+        "field": "other_drugs",
+        "mapper": {
+            "No": False,
+            "Yes": True,
+        },
+    },
+    "SmokeFrequency(PerDay)": {
+        "field": "smoke_frequency_per_day",
+    },
+    "CanabisFrequency(PerWeek)": {
+        "field": "canabis_frequency_per_week",
+    },
+    "SOS-Q": {
+        "field": "sos_q",
+    },
+    "SmartPhoneUsage": {
+        "field": "smartphone_usage",
+    },
+    "HasPet": {
+        "field": "has_pet",
+        "mapper": {
+            "No": False,
+            "Yes": True,
+            "In the past": "past",
+        },
+    },
+    "PetType": {
+        "field": "pet_type",
+    },
+    "PetDuration": {
+        "field": "pet_duration",
+    },
+    "HomeCooking(Times/Week)": {
+        "field": "home_cooking_times_per_week",
+    },
+    "RecreationalActivity(Times/Week)": {
+        "field": "recreational_activity_times_per_week",
+    },
+    "WorkingWithComputer": {
+        "field": "working_with_computer_times_per_week",
+    },
+    "ScreenTime": {
+        "field": "screen_time",
+    },
+    "SituationalPhobia": {
+        "field": "situational_phobia",
+    },
+    "SocialPhobia": {
+        "field": "social_phobia",
+    },
+    "AnimalBased": {
+        "field": "animal_based_phobia",
+    },
+    "MedicalPhobia": {
+        "field": "medical_phobia",
+    },
+    "TotalPhobia": {
+        "field": "total_phobia",
     },
 }
 
