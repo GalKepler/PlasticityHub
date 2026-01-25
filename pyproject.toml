@@ -29,7 +29,7 @@ django-stubs = {version = "5.0.4", extras = ["compatible-mypy"]}
 pytest = "8.3.2"
 pytest-sugar = "1.0.0"
 sphinx = "8.0.2"
-sphinx-autobuild = "2024.9.3"
+sphinx-autobuild = "2024.10.3"
 ruff = "0.6.3"
 coverage = "7.6.1"
 djlint = "1.35.2"
